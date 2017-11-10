@@ -19,12 +19,12 @@ Template Name: Template - No Jumbotron Page
  * @subpackage 	Starkers
  * @since 		Starkers 4.0
  */
-global $kake_theme_option; 
-$trans_opt = $kake_theme_option['transitional-header-button'];
+global $prodhmd_theme_option; 
+$trans_opt = $prodhmd_theme_option['transitional-header-button'];
 $trans_page_opt = get_post_meta($post->ID,'page_options_trans-header',true);
 ?>
 <?php if ( $trans_page_opt == 1 ) { ?> 
-    <?php if ( $kake_theme_option['transitional-header-button'] ) { ?>
+    <?php if ( $prodhmd_theme_option['transitional-header-button'] ) { ?>
         <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header', 'parts/shared/trans-header' ) ); ?>
     <?php } ?>
 <?php } else { ?>

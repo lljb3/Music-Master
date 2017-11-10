@@ -1,24 +1,24 @@
 
 <?php 
-	global $kake_theme_option;
-	$copyright = $kake_theme_option['copyright'];
-	$facebook = $kake_theme_option['social-facebook'];
-	$twitter = $kake_theme_option['social-twitter'];
-	$google = $kake_theme_option['social-google'];
-	$linkedin = $kake_theme_option['social-linkedin'];
-	$pinterest = $kake_theme_option['social-pinterest'];
-	$instagram = $kake_theme_option['social-instagram'];
-	$youtube = $kake_theme_option['social-youtube'];
-	$skype = $kake_theme_option['social-skype'];
-	$yelp = $kake_theme_option['social-yelp'];
+	global $prodhmd_theme_option;
+	$copyright = $prodhmd_theme_option['copyright'];
+	$facebook = $prodhmd_theme_option['social-facebook'];
+	$twitter = $prodhmd_theme_option['social-twitter'];
+	$google = $prodhmd_theme_option['social-google'];
+	$linkedin = $prodhmd_theme_option['social-linkedin'];
+	$pinterest = $prodhmd_theme_option['social-pinterest'];
+	$instagram = $prodhmd_theme_option['social-instagram'];
+	$youtube = $prodhmd_theme_option['social-youtube'];
+	$skype = $prodhmd_theme_option['social-skype'];
+	$yelp = $prodhmd_theme_option['social-yelp'];
 ?>
 	
-<?php if ( $kake_theme_option['footer-show-up-button'] ) { ?>
+<?php if ( $prodhmd_theme_option['footer-show-up-button'] ) { ?>
 	<!-- Back to Top -->
 	<a data-scroll href="#totop" class="totop fadeOut"><span class="glyphicon glyphicon-triangle-top"></span></a>
 <?php } ?>
 
-<?php if ( $kake_theme_option['footer-sitemap'] ) { ?>
+<?php if ( $prodhmd_theme_option['footer-sitemap'] ) { ?>
 	<!-- Sitemap Information -->
 	<div class="container-fluid" id="footer-sitemap">
 		<div class="row">

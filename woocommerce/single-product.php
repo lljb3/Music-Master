@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 ?>
-<?php global $kake_theme_option; if ( $kake_theme_option['transitional-header-button'] ) { ?>
+<?php global $prodhmd_theme_option; if ( $prodhmd_theme_option['transitional-header-button'] ) { ?>
 	<?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header', 'parts/shared/trans-header' ) ); ?>
 <?php } else { ?>
 	<?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header', 'parts/shared/header' ) ); ?>

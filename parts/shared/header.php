@@ -1,12 +1,12 @@
 
 <?php
-	global $kake_theme_option;
-	if ( !empty( $kake_theme_option['logo-menu'] ) ) {
-		$logo = $kake_theme_option['logo-menu']['url'];
+	global $prodhmd_theme_option;
+	if ( !empty( $prodhmd_theme_option['logo-menu'] ) ) {
+		$logo = $prodhmd_theme_option['logo-menu']['url'];
 	}
-    $chat = $kake_theme_option['site-header-chat'];
-    $chat_click = $kake_theme_option['site-header-chat-click'];
-    $phone = $kake_theme_option['site-header-phone'];
+    $chat = $prodhmd_theme_option['site-header-chat'];
+    $chat_click = $prodhmd_theme_option['site-header-chat-click'];
+    $phone = $prodhmd_theme_option['site-header-phone'];
 ?>
 
 <!-- Header Information -->

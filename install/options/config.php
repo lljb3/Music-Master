@@ -334,7 +334,7 @@ if (!class_exists('Redux_Framework_sample_config')) {
 			/* ==============================
 				Header
 			============================== */
-			$kakeoptions = get_option('kake_theme_option');
+			$kakeoptions = get_option('prodhmd_theme_option');
 			$this->sections[] = array(
 	            'title'     => __('Header', 'redux-framework-demo'),
 	            'desc'      => __('The header. Make sure to double check every section.', 'redux-framework-demo'),
@@ -1399,7 +1399,7 @@ if (!class_exists('Redux_Framework_sample_config')) {
             $theme = wp_get_theme();							// For use with some settings. Not necessary.
             $this->args = array(
                 // TYPICAL -> Change these values as you need/desire
-                'opt_name'          => 'kake_theme_option',		// This is where your data is stored in the database and also becomes your global variable name.
+                'opt_name'          => 'prodhmd_theme_option',		// This is where your data is stored in the database and also becomes your global variable name.
                 'display_name'      => $theme->get('Name'),     // Name that appears at the top of your panel
                 'display_version'   => $theme->get('Version'),  // Version that appears at the top of your panel
                 'menu_type'         => 'submenu',               // Specify if the admin menu should appear or not. Options: menu or submenu (Under appearance only)

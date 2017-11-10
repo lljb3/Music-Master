@@ -1,7 +1,7 @@
 <?php
-	global $kake_theme_option;
-	if ( !empty( $kake_theme_option['favicon'] ) ) {
-		$favicon = $kake_theme_option['favicon']['url'];
+	global $prodhmd_theme_option;
+	if ( !empty( $prodhmd_theme_option['favicon'] ) ) {
+		$favicon = $prodhmd_theme_option['favicon']['url'];
 	}
 	else {
 		$favicon = '';

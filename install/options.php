@@ -12,9 +12,9 @@
 	function tt_custom_login() {
 		// Login Page Logo
 		$output  = '<style type="text/css">';
-			global $kake_theme_option;
-			$login_logo = $kake_theme_option['logo-login']['url'];
-			$background_login = $kake_theme_option['background-login'];
+			global $prodhmd_theme_option;
+			$login_logo = $prodhmd_theme_option['logo-login']['url'];
+			$background_login = $prodhmd_theme_option['background-login'];
 			if ( !empty( $login_logo ) ) {
 				$output .= '.login h1 a { background: url(' . $login_logo . ') 50% 50% no-repeat !important; width: auto; }';
 			}
@@ -118,20 +118,20 @@
 		Custom Styles
 	======================== */
 	function tt_custom_styles() {
-		global $kake_theme_option;
-		$opacity = $kake_theme_option['opacity-slider'];
+		global $prodhmd_theme_option;
+		$opacity = $prodhmd_theme_option['opacity-slider'];
 		// Content Buttons
-		$btn_bg = $kake_theme_option['color-content-link'];
-		$btn_bg_hover = $kake_theme_option['color-content-link'];
-		$btn_text = $kake_theme_option['color-content-link'];
-		$btn_text_hover = $kake_theme_option['color-button-text'];
+		$btn_bg = $prodhmd_theme_option['color-content-link'];
+		$btn_bg_hover = $prodhmd_theme_option['color-content-link'];
+		$btn_text = $prodhmd_theme_option['color-content-link'];
+		$btn_text_hover = $prodhmd_theme_option['color-button-text'];
 		// Read More Buttons
-		$read_more_bg = $kake_theme_option['color-blog-posts-read-more-bg'];
-		$read_more_bg_hover = $kake_theme_option['color-blog-posts-read-more-bg-hover'];
-		$read_more_text = $kake_theme_option['color-blog-posts-read-more-text'];
-		$read_more_text_hover = $kake_theme_option['color-blog-posts-read-more-text-hover'];
+		$read_more_bg = $prodhmd_theme_option['color-blog-posts-read-more-bg'];
+		$read_more_bg_hover = $prodhmd_theme_option['color-blog-posts-read-more-bg-hover'];
+		$read_more_text = $prodhmd_theme_option['color-blog-posts-read-more-text'];
+		$read_more_text_hover = $prodhmd_theme_option['color-blog-posts-read-more-text-hover'];
 		// Custom Styles
-		$custom_styles = $kake_theme_option['custom-styles'];
+		$custom_styles = $prodhmd_theme_option['custom-styles'];
 		$style_type = 'type="text/css"';
 		
 		echo '<style '. $style_type .'>';

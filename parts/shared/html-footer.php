@@ -1,6 +1,6 @@
 <?php
-	global $kake_theme_option;
-	$custom_scripts = $kake_theme_option['custom-scripts'];
+	global $prodhmd_theme_option;
+	$custom_scripts = $prodhmd_theme_option['custom-scripts'];
 ?>
 
 <!-- File Calls -->

@@ -19,12 +19,12 @@
 	 * @subpackage 	Starkers
 	 * @since 		Starkers 4.0
 	 */
-global $kake_theme_option; 
-$trans_opt = $kake_theme_option['transitional-header-button'];
+global $prodhmd_theme_option; 
+$trans_opt = $prodhmd_theme_option['transitional-header-button'];
 $trans_page_opt = get_post_meta($post->ID,'page_options_trans-header',true);
 ?>
 <?php if ( $trans_page_opt == 1 ) { ?> 
-    <?php if ( $kake_theme_option['transitional-header-button'] ) { ?>
+    <?php if ( $prodhmd_theme_option['transitional-header-button'] ) { ?>
         <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header', 'parts/shared/trans-header' ) ); ?>
     <?php } ?>
 <?php } else { ?>
@@ -66,7 +66,7 @@ $trans_page_opt = get_post_meta($post->ID,'page_options_trans-header',true);
                     <a href="<?php echo $sliderlink; ?>" class="btn btn-lg button-success"><?php echo $sliderbutton; ?></a>
                 <?php } ?>
                 <div class="down-arrow">
-                    <?php $scrdwnimg = $kake_theme_option['scroll-down-icon-image']['url']; $scrdwnicon = $kake_theme_option['scroll-down-icon-html']; $scrdwntxt = $kake_theme_option['scroll-down-text']; $scrdwnline = $kake_theme_option['scroll-down-line']; ?>
+                    <?php $scrdwnimg = $prodhmd_theme_option['scroll-down-icon-image']['url']; $scrdwnicon = $prodhmd_theme_option['scroll-down-icon-html']; $scrdwntxt = $prodhmd_theme_option['scroll-down-text']; $scrdwnline = $prodhmd_theme_option['scroll-down-line']; ?>
                     <?php if( !empty( $scrdwnimg ) && empty( $scrdwnicon ) ) { ?>
                         <a href="#content" data-scroll><img src="<?php echo $scrdwnimg ?>" alt="" /></a><br />
                     <?php } elseif( !empty( $scrdwnicon ) ) { ?>
@@ -99,12 +99,12 @@ $trans_page_opt = get_post_meta($post->ID,'page_options_trans-header',true);
                     <?php endwhile; ?>
                 <!-- end .col-md-10 --></div>
             <!-- end .row --></div>
-            <?php if( $kake_theme_option['content-posts-container'] ) { ?>
+            <?php if( $prodhmd_theme_option['content-posts-container'] ) { ?>
                 <div class="row" id="posts-section">
                     <?php // Display blog posts on any page @ http://m0n.co/l
                     $temp = $wp_query; $wp_query = null;
-                    $postsno = $kake_theme_option['blog-posts-number-of'];
-                    $cat_array = $kake_theme_option['blog-posts-category'];
+                    $postsno = $prodhmd_theme_option['blog-posts-number-of'];
+                    $cat_array = $prodhmd_theme_option['blog-posts-category'];
                     $categories = str_replace(', ','+',$cat_array);
                     $wp_query = new WP_Query(); $wp_query->query('showposts=' . $postsno . '&paged='. $paged . '&category_name=' . $categories);
                     while ($wp_query->have_posts()) : $wp_query->the_post(); ?>
