@@ -8,7 +8,7 @@
 				'jplayer': '/wp-content/themes/music-master/assets/js/lib/music.min',
 			},
 			shim: {
-				'scrollreveal': {
+				'rellax': {
 					deps: ['jquery'],
 				}
 			},
@@ -158,7 +158,6 @@
 					$('.isotope').isotope({ filter: filterValue });
 				});
 			}
-			musictope();
 	
 			// Handling Link Hash
 			function windowhash() {
@@ -172,17 +171,30 @@
 					} );
 				}
 			}
-			windowhash();
 	
 			// Adding Backlist Classes
 			function addBlacklistClass() {
-				if ($('#main .archive').hasClass('woocommerce-cart')) {
-					$('a').each( function() {
+				$('a').each(function() {
+					if (this.href.indexOf('/wp-admin') !== -1 ||
+					this.href.indexOf('/wp-login.php') !== -1 ||
+					$('#main .archive').hasClass('woocommerce-cart')) {
 						$(this).addClass('nosmoothstate');
+					}
+				})
+			}
+
+			// Adding Comments Section Hash
+			function addBlacklistHash() {
+				var $hash = $( window.location.hash );
+				if ($hash.length !== 0) {
+					var offsetTop = $hash.offset().top;
+					$('body, html').animate({
+							scrollTop: ( offsetTop - 60 ),
+						},{
+							duration: 280
 					});
 				}
 			}
-			addBlacklistClass();
 	
 			// AnivewJS Options
 			var options = {
@@ -239,6 +251,7 @@
 					musictope();
 					windowhash();
 					addBlacklistClass();
+					addBlacklistHash();
 				}
 			});
 			
