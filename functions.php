@@ -31,19 +31,12 @@
 	======================================================================================================================== */
 
 	add_theme_support('post-thumbnails');
-	add_action( 'after_setup_theme', 'register_my_menu' );
 	function register_my_menu() {
 		register_nav_menu( 'primary', 'Home Menu' );
 		register_nav_menu( 'secondary', 'Other Menu' );
-		// Site Map
-		register_nav_menu( 'sitemap1', 'Site Map 1' );
-		register_nav_menu( 'sitemap2', 'Site Map 2' );
-		register_nav_menu( 'sitemap3', 'Site Map 3' );
-		register_nav_menu( 'sitemap4', 'Site Map 4' );
-		register_nav_menu( 'sitemap5', 'Site Map 5' );
-		register_nav_menu( 'sitemap6', 'Site Map 6' );
 	}
-
+	add_action( 'after_setup_theme', 'register_my_menu' );
+	
 	/* ========================================================================================================================
 	
 	Actions and Filters
@@ -59,7 +52,8 @@
 	
 	======================================================================================================================== */
 
-	require_once( 'includes/testimonials.php' );
+	require_once( 'includes/discography/discography-plugin.php' );
+	require_once( 'includes/shows/shows-plugin.php' );
 
 	/* ========================================================================================================================
 	
