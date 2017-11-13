@@ -10,8 +10,8 @@
 ?>
 
 <!-- Header Information -->
-<header id="header-container" class="row">
-    <div class="menu center-block">
+<header id="header-container" class="container-fluid">
+    <div class="menu center-block row">
         <a href="<?php echo esc_url( home_url('/') ); ?>" class="navbar-brand center-block">
             <?php if( empty( $logo ) ) { ?>
                 <span><?php bloginfo('name'); ?></span>

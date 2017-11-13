@@ -11,7 +11,7 @@
 		if ( class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'photon' ) ) {
 			wp_enqueue_script( 'requirejs',  $app_base . '/require.js', array('jquery','backbone','jetpack-carousel'), false, true );
 		} else {
-			wp_enqueue_script( 'requirejs',  $app_base . '/require.js', array('jquery'), false, true );
+			wp_enqueue_script( 'requirejs',  $app_base . '/require.js', array('jquery','backbone','wp-embed'), false, true );
 		}
 		wp_localize_script( 'requirejs', 'require', array(
 			'baseUrl' => $app_base,
