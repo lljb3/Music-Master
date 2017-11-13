@@ -23,13 +23,6 @@
 		return $template_path;
 	}
 
-	// Script Loader
-    function music_script_loader() {
-		$script_path = get_template_directory_uri( __FILE__ ).'/includes/discography/';
-		wp_enqueue_script( 'plugin-js', $script_path . 'lib/js/discography.js', array( 'jquery' ), '1.0.0', true );
-    }
-    add_action('wp_enqueue_scripts', 'music_script_loader');
-
 	// Get ID of Slug
 	function get_music_id_by_slug( $page_slug ) {
 		$page = get_page_by_path( $page_slug );

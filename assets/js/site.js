@@ -221,7 +221,7 @@
 		}
 		
 		// Smooth State AJAX
-		$('#main').smoothState({
+		$('main').smoothState({
 			blacklist: '.nosmoothstate, .fancybox',
 			onBefore: function($anchor, $container) {},
 			onStart: {

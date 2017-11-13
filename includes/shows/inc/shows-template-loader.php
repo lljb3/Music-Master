@@ -23,13 +23,6 @@
 	}
 	add_filter( 'template_include', 'include_shows_template', 1 );
 
-	// Script Loader
-    function shows_script_loader() {
-		$script_path = get_template_directory_uri( __FILE__ ).'/includes/shows/';
-		wp_enqueue_script( 'plugin-js', $script_path . 'js/shows.js', array( 'jquery' ), '1.0.0', true );
-    }
-    add_action('wp_enqueue_scripts', 'shows_script_loader');
-
 	// Get ID of Slug
 	function get_shows_id_by_slug( $page_slug ) {
 		$page = get_page_by_path( $page_slug );
