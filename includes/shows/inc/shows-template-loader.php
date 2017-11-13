@@ -25,7 +25,7 @@
 
 	// Script Loader
     function shows_script_loader() {
-		$script_path = plugin_dir_url( __FILE__ ).'../lib/';
+		$script_path = get_template_directory_uri( __FILE__ ).'/includes/shows/';
 		wp_enqueue_script( 'plugin-js', $script_path . 'js/shows.js', array( 'jquery' ), '1.0.0', true );
     }
     add_action('wp_enqueue_scripts', 'shows_script_loader');

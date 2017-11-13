@@ -25,6 +25,9 @@ $trans_page_opt = get_post_meta($post->ID,'page_options_trans-header',true);
 ?>
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header', 'parts/shared/header' ) ); ?>
 
+<!-- Main Information -->
+<main <?php body_class(); ?> id="<?php echo get_page_slug(); ?>">
+
 <!-- Jumbotron Information -->
 <div class="jumbotron" id="home">
     <div class="slider-text container-fluid">
@@ -81,5 +84,7 @@ $trans_page_opt = get_post_meta($post->ID,'page_options_trans-header',true);
     <!-- end .slider --></div>
     <div class="slider-wash"></div>
 <!-- end .jumbotron --></div>
+
+<!-- end .home --></main>
 
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/footer','parts/shared/html-footer' ) ); ?>

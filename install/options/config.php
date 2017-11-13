@@ -1167,6 +1167,14 @@ if (!class_exists('Redux_Framework_sample_config')) {
 				'icon'      => 'el el-video-chat',
 				'fields'    => array(
 					array(
+						'id' => 'intro-loader',
+						'type'	=> 'checkbox',
+						'title'	=> __('Activate Intro Loader', 'redux-framework-demo'),
+						'subtitle'	=> __('', 'redux-framework-demo'),
+						'desc'	=> __('', 'redux-framework-demo'),
+						'default' => 0
+					),
+					array(
 						'id'	=> 'intro-video',
 						'type'	=> 'text',
 						'title'     => __('Intro Video', 'redux-framework-demo'),
@@ -1193,6 +1201,14 @@ if (!class_exists('Redux_Framework_sample_config')) {
 				'desc'      => __('Set these parameters to customize the loading screen in between pages.', 'redux-framework-demo'),
 				'icon'      => 'el el-screen',
 				'fields'    => array(
+					array(
+						'id' => 'page-loader',
+						'type'	=> 'checkbox',
+						'title'	=> __('Activate Page Loader', 'redux-framework-demo'),
+						'subtitle'	=> __('', 'redux-framework-demo'),
+						'desc'	=> __('', 'redux-framework-demo'),
+						'default' => 0
+					),
 					array(
 						'id'	=> 'loader-video',
 						'type'	=> 'text',

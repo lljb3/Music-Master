@@ -30,8 +30,11 @@ Template Name: Template - Intro
 ?>
 
 <!-- Main Information -->
+<main <?php body_class(); ?> id="<?php echo get_page_slug(); ?>">
+
+<!-- Video Information -->
 <div class="container-fluid" id="video-container">
-    <div <?php body_class(''); ?>>
+    <div class="row">
 		<div class="col-md-12">
 			<div class="video-intro">
 				<video autoplay class="video" id="video">
@@ -61,8 +64,6 @@ Template Name: Template - Intro
     <!-- end .body-class --></div>
 <!-- end #video-container --></div>
 
-<script type="text/javascript">
-	<?php require_once( 'js/intro.js' ); ?>
-</script>
+<!-- end .intro --></main>
 
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-footer' ) ); ?>

@@ -206,9 +206,6 @@
 		// FancyBox 2
 		$('.fancybox').fancybox();
 
-		// StellarJS Init
-		$.stellar();
-
 		// Loader Vars
 		var loadin = function loadin() {
 			$('body').addClass('loadin');	
@@ -254,8 +251,7 @@
 				addBlacklistHash();
 			}
 		});
-		
-
+		/*
 		// Video Intro
 		window.onload = function() {
 			// Global Vars
@@ -313,7 +309,7 @@
 			$(this).addClass('has-ended');
 			$('#replay').addClass('fade-in');
 		});
-		
+		*/
 	});
 					
 })(jQuery, window, document);

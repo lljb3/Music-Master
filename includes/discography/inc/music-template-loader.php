@@ -25,9 +25,8 @@
 
 	// Script Loader
     function music_script_loader() {
-		$script_path = plugin_dir_url( __FILE__ ).'../lib/';
-		wp_enqueue_script( 'isotope-js', $script_path  . 'js/isotope.min.js', array( 'jquery' ), '3.0.1', true );
-		wp_enqueue_script( 'plugin-js', $script_path . 'js/discography.js', array( 'jquery' ), '1.0.0', true );
+		$script_path = get_template_directory_uri( __FILE__ ).'/includes/discography/';
+		wp_enqueue_script( 'plugin-js', $script_path . 'lib/js/discography.js', array( 'jquery' ), '1.0.0', true );
     }
     add_action('wp_enqueue_scripts', 'music_script_loader');
 

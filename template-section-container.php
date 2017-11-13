@@ -25,6 +25,9 @@ $trans_page_opt = get_post_meta($post->ID,'page_options_trans-header',true);
 ?>
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header', 'parts/shared/header' ) ); ?>
 
+<!-- Main Information -->
+<main <?php body_class(); ?> id="<?php echo get_page_slug(); ?>">
+
 <!-- Jumbotron Information -->
 <div class="jumbotron" id="other">
     <div class="slider-text container-fluid">
@@ -83,7 +86,7 @@ $trans_page_opt = get_post_meta($post->ID,'page_options_trans-header',true);
 <!-- end .jumbotron --></div>
 
 <!-- Section Container Information -->
-<main class="container-fluid" id="section-container">
+<section class="container-fluid" id="section-container">
 	<?php 
 		$args = array(
 			'post_type'=>'page',
@@ -102,16 +105,18 @@ $trans_page_opt = get_post_meta($post->ID,'page_options_trans-header',true);
                     $post_slug = $post->post_name;
                     $section_bg = wp_get_attachment_url( get_post_thumbnail_id() );
                 ?>
-                <section class="container-fluid section" id="<?php echo $post_slug; ?>" <?php if( !empty( $section_bg ) ) { ?> style="background-image:url('<?php echo $section_bg; ?>')" <?php } ?>>
+                <div class="container-fluid section" id="<?php echo $post_slug; ?>" <?php if( !empty( $section_bg ) ) { ?> style="background-image:url('<?php echo $section_bg; ?>')" <?php } ?>>
 					<div class="row">
 						<div class="col-md-12">
 							<?php the_content(); ?>
 						<!-- end .col-md-12 --></div>
 					<!-- end .row --></div>
-				<!-- end #section --></section>
+				<!-- end #section --></div>
 			<?php endwhile; ?>
         <!-- end .col-md-12 --></div>
     <!-- end .row --></div>
-<!-- end #content --></main>
+<!-- end #content --></section>
+
+<!-- end .home --></main>
 
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/footer','parts/shared/html-footer' ) ); ?>
