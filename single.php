@@ -14,7 +14,7 @@
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
 <!-- Main Information -->
-<main <?php body_class(); ?> id="<?php echo get_page_slug(); ?>">
+<main <?php body_class(); ?> id="single">
 
 <!-- Container Information -->
 <div class="container-fluid" id="content">
@@ -44,6 +44,6 @@
     <!-- end .row --></div>
 <!-- end #content --></div>
 
-<!-- end .single --></div>
+<!-- end .single --></main>
 
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/footer','parts/shared/html-footer' ) ); ?>

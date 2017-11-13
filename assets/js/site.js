@@ -16,7 +16,7 @@
 	if (typeof jQuery === 'function') {
 		define('jquery', function () { return jQuery; });
 	}
-	requirejs(['angular','plugins'], function() {
+	requirejs(['angular','plugins','jplayer'], function() {
 		
 		// Global Vars
 		var windowHeight = $(window).innerHeight();

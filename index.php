@@ -16,7 +16,7 @@
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header', 'parts/shared/header' ) ); ?>
 
 <!-- Main Information -->
-<main <?php body_class(); ?> id="<?php echo get_page_slug(); ?>">
+<main <?php body_class(); ?> id="blog">
 
 <!-- Container Information -->
 <div class="container-fluid" id="content">
@@ -24,22 +24,22 @@
         <h1 class="has-title text-center">Latest Posts</h1>	
         <div class="col-md-6 col-md-offset-1" id="posts-section">
 			<?php if ( have_posts() ): ?>
-            <ol class="row list-unstyled">
-            <?php while ( have_posts() ) : the_post(); ?>
-                <li class="col-md-12">
-                    <article class="post row">
-                        <div class="thumbnail col-md-3 col-xs-3"><?php the_post_thumbnail('large',['class'=>'img-responsive center-block']); ?></div>
-                        <div class="post-inner col-md-9 col-xs-9">
-                            <h2 class="post-title"><a href="<?php esc_url( the_permalink() ); ?>" title="Permalink to <?php the_title(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
-                            <time datetime="<?php the_time( 'Y-m-d' ); ?>" pubdate><?php the_date(); ?> <?php the_time(); ?></time> <?php comments_popup_link('Leave a Comment', '1 Comment', '% Comments'); ?>
-                            <?php the_content('Continue Reading'); ?>
-                        </div>
-                    <!-- end .post --></article>
-                <!-- end .col-md-12 --></li>
-            <?php endwhile; ?>
-            <!-- end .row --></ol>
+                <ol class="row list-unstyled">
+                    <?php while ( have_posts() ) : the_post(); ?>
+                        <li class="col-md-12">
+                            <article class="post row">
+                                <div class="thumbnail col-md-3 col-xs-3"><?php the_post_thumbnail('large',['class'=>'img-responsive center-block']); ?></div>
+                                <div class="post-inner col-md-9 col-xs-9">
+                                    <h2 class="post-title"><a href="<?php esc_url( the_permalink() ); ?>" title="Permalink to <?php the_title(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+                                    <time datetime="<?php the_time( 'Y-m-d' ); ?>" pubdate><?php the_date(); ?> <?php the_time(); ?></time> <?php comments_popup_link('Leave a Comment', '1 Comment', '% Comments'); ?>
+                                    <?php the_content('Continue Reading'); ?>
+                                </div>
+                            <!-- end .post --></article>
+                        <!-- end .col-md-12 --></li>
+                    <?php endwhile; ?>
+                <!-- end .row --></ol>
             <?php else: ?>
-            <h4 class="has-title">No posts to display</h4>
+                <h4 class="has-title">No posts to display</h4>
             <?php endif; ?>
             <div class="row" id="pagination">
             	<div class="col-md-12">
