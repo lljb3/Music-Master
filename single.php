@@ -13,6 +13,9 @@
 
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
+<!-- Main Information -->
+<main <?php body_class(); ?> id="<?php echo get_page_slug(); ?>">
+
 <!-- Container Information -->
 <div class="container-fluid" id="content">
     <div class="row">
@@ -40,5 +43,7 @@
         <!-- end .col-md-4 --></div>
     <!-- end .row --></div>
 <!-- end #content --></div>
+
+<!-- end .single --></div>
 
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/footer','parts/shared/html-footer' ) ); ?>

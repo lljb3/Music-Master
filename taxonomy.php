@@ -1,7 +1,7 @@
 <?php
 /**
- * Search results page
- * 
+ * The template for displaying Taxonomy pages
+ *
  * Please see /external/starkers-utilities.php for info on Starkers_Utilities::get_template_parts()
  *
  * @package 	WordPress
@@ -17,7 +17,7 @@
 <!-- Container Information -->
 <div class="container-fluid" id="content">
     <div class="row">
-        <h2 class="has-title text-center">Search Results for '<?php echo get_search_query(); ?>'</h2>	
+        <h2 class="has-title text-center">Taxonomy Archive: <?php echo single_tax_title( '', false ); ?></h2>	
         <div class="col-md-6 col-md-offset-1" id="posts-section">
 			<?php if ( have_posts() ): ?>
             <ol class="row list-unstyled">
@@ -34,9 +34,9 @@
                 <!-- end .col-md-12 --></li>
             <?php endwhile; ?>
             <!-- end .list-unstyled --></ol>
-			<?php else: ?>
-				<h2>No results found for '<?php echo get_search_query(); ?>'</h2>
-			<?php endif; ?>
+            <?php else: ?>
+                <h2>No posts to display in <?php echo single_tax_title( '', false ); ?></h2>
+            <?php endif; ?>
             <div class="row" id="pagination">
             	<div class="col-md-12">
                 	<?php starkers_numeric_posts_nav(); ?>
@@ -49,6 +49,6 @@
     <!-- end .row --></div>
 <!-- end #content --></div>
 
-<!-- end .search --></main>
+<!-- end .taxonomy --></main>
 
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/footer','parts/shared/html-footer' ) ); ?>
