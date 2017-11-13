@@ -47,4 +47,11 @@
 <div id="fb-root"></div>
 
 <!-- Top of Page -->
-<div id="totop"></div>
+<div class="hidden" id="totop"></div>
+
+<!-- Loader -->
+<?php if( is_page_template('template-intro.php') ) { ?>
+    <!-- Loader Not On Intro -->
+<?php } else { ?>
+	<?php require_once( 'loader.php' ); ?>
+<?php } ?>

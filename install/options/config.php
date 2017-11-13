@@ -334,7 +334,7 @@ if (!class_exists('Redux_Framework_sample_config')) {
 			/* ==============================
 				Header
 			============================== */
-			$kakeoptions = get_option('prodhmd_theme_option');
+			$prodhmdoptions = get_option('prodhmd_theme_option');
 			$this->sections[] = array(
 	            'title'     => __('Header', 'redux-framework-demo'),
 	            'desc'      => __('The header. Make sure to double check every section.', 'redux-framework-demo'),
@@ -373,7 +373,7 @@ if (!class_exists('Redux_Framework_sample_config')) {
 					array(
 						'id'   => 'color-trans-header-border',
 						'type' => 'border',
-						'hidden' => ($kakeoptions['transitional-header-button'] == 0) ? true : false,
+						'hidden' => ($prodhmdoptions['transitional-header-button'] == 0) ? true : false,
 						'title' => __('Trans Header Border Color', 'redux-framework-demo'),
 						'subtitle' => __('Change Trans Header Border Color'),
 						'desc'	=> __('', 'redux-framework-demo'),
@@ -394,7 +394,7 @@ if (!class_exists('Redux_Framework_sample_config')) {
 					array(
 						'id'   => 'color-trans-header-background',
 						'type' => 'background',
-						'hidden' => ($kakeoptions['transitional-header-button'] == 0) ? true : false,
+						'hidden' => ($prodhmdoptions['transitional-header-button'] == 0) ? true : false,
 						'title' => __('Trans Header Background Color', 'redux-framework-demo'),
 						'subtitle' => __('Change Header Background Color'),
 						'output' => array('#trans-menu.large'),
@@ -408,7 +408,7 @@ if (!class_exists('Redux_Framework_sample_config')) {
 					array(
 						'id'	=> 'color-trans-header',
 						'type'	=> 'color',
-						'hidden' => ($kakeoptions['transitional-header-button'] == 0) ? true : false,
+						'hidden' => ($prodhmdoptions['transitional-header-button'] == 0) ? true : false,
 						'title'	=> __('Trans Header Color', 'redux-framework-demo'), 
 						'subtitle'	=> __('Trans Header Color (default: #ffffff)', 'redux-framework-demo'),
 						'default'	=> '#ffffff',
@@ -419,7 +419,7 @@ if (!class_exists('Redux_Framework_sample_config')) {
 					array(
 						'id'	=> 'typography-header',
 						'type'	=> 'typography',
-						'hidden' => ($kakeoptions['transitional-header-button'] == 0) ? true : false,
+						'hidden' => ($prodhmdoptions['transitional-header-button'] == 0) ? true : false,
 						'title'	=> __('Typography Trans Header', 'redux-framework-demo'),
 						'google'	=> true,
 						'fonts'		=> $custom_fonts,
@@ -450,7 +450,7 @@ if (!class_exists('Redux_Framework_sample_config')) {
 					array(
 						'id'	=> 'color-trans-header-link',
 						'type'	=> 'color',
-						'hidden' => ($kakeoptions['transitional-header-button'] == 0) ? true : false,
+						'hidden' => ($prodhmdoptions['transitional-header-button'] == 0) ? true : false,
 						'title'	=> __('Trans Header Link Color', 'redux-framework-demo'),
 						'output'	=> array('#trans-menu.large a,#trans-menu.large a:visited,#trans-menu.large a:focus,#trans-menu.large .fa,#trans-menu.large .fa:visited,#trans-menu.large .fa:focus'),
 						'subtitle'	=> __('Trans Header Link Color (default: #70b9a0)', 'redux-framework-demo'),
@@ -461,7 +461,7 @@ if (!class_exists('Redux_Framework_sample_config')) {
 					array(
 						'id'	=> 'color-trans-header-link-hover',
 						'type'	=> 'color',
-						'hidden' => ($kakeoptions['transitional-header-button'] == 0) ? true : false,
+						'hidden' => ($prodhmdoptions['transitional-header-button'] == 0) ? true : false,
 						'title'	=> __('Trans Content Hover Link Color', 'redux-framework-demo'), 
 						'output'	=> array('#trans-menu.large a:hover,#trans-menu.large a:active,#trans-menu.large .fa:hover,#trans-menu.large .fa:active'),
 						'subtitle'	=> __('Trans Content Hover Link Color (default: #70b9a0)', 'redux-framework-demo'),
@@ -980,7 +980,7 @@ if (!class_exists('Redux_Framework_sample_config')) {
 					array(
 						'id' => 'blog-posts-number-of',
 						'type' => 'slider',
-						//'hidden' => ($kakeoptions['content-posts-container'] == 0) ? true : false,
+						//'hidden' => ($prodhmdoptions['content-posts-container'] == 0) ? true : false,
 						'title'	=> __('Number of Blog Posts', 'redux-framework-demo'),
 						'subtitle'	=> __('Set the number of blog posts to generate', 'redux-framework-demo'),
 						'desc'	=> __('Do not choose 5 or 7 unless you want to be uneven on the bottom.', 'redux-framework-demo'),
@@ -1157,7 +1157,110 @@ if (!class_exists('Redux_Framework_sample_config')) {
 					),
 				),
 			);
+
+			/* ==============================
+				Intro
+			============================== */
+			$this->sections[] = array(
+				'title'     => __('Intro Page', 'redux-framework-demo'),
+				'desc'      => __('Set these parameters to customize the intro page.', 'redux-framework-demo'),
+				'icon'      => 'el el-video-chat',
+				'fields'    => array(
+					array(
+						'id'	=> 'intro-video',
+						'type'	=> 'text',
+						'title'     => __('Intro Video', 'redux-framework-demo'),
+						'validate'  => 'url',
+						'desc'      => __('Place your video link here. You can use a Media Library link as well.', 'redux-framework-demo' ),
+						'subtitle'  => __('', 'redux-framework-demo'),
+					),
+					array(
+						'id'	=> 'intro-text',
+						'type'	=> 'text',
+						'title'     => __('Intro Text', 'redux-framework-demo'),
+						'validate'  => 'text',
+						'desc'      => __('Type your video title here. Or anything, really.', 'redux-framework-demo' ),
+						'subtitle'  => __('', 'redux-framework-demo'),
+					),
+				)
+			);
             
+			/* ==============================
+				Page Loader
+			============================== */
+			$this->sections[] = array(
+				'title'     => __('Page Loader', 'redux-framework-demo'),
+				'desc'      => __('Set these parameters to customize the loading screen in between pages.', 'redux-framework-demo'),
+				'icon'      => 'el el-screen',
+				'fields'    => array(
+					array(
+						'id'	=> 'loader-video',
+						'type'	=> 'text',
+						'title'     => __('Loader Video', 'redux-framework-demo'),
+						'validate'  => 'url',
+						'desc'      => __('Place your video link here. You can use a Media Library link as well.', 'redux-framework-demo' ),
+						'subtitle'  => __('', 'redux-framework-demo'),
+					),
+					array(
+						'id'	=> 'loader-image',
+						'type'	=> 'media',
+						'title'     => __('Loader Image', 'redux-framework-demo'),
+						'compiler'  => 'true',
+						'mode'      => false, // Can be set to false to allow any media type, or can also be set to any mime type.
+						'desc'      => __('Upload any image you would like. This can even be an overlay of the video you want to use.', 'redux-framework-demo' ),
+						'subtitle'  => __('', 'redux-framework-demo'),
+					),
+					array(
+						'id'	=> 'loader-mobile-image',
+						'type'	=> 'media',
+						'title'     => __('Loader Mobile Image', 'redux-framework-demo'),
+						'compiler'  => 'true',
+						'mode'      => false, // Can be set to false to allow any media type, or can also be set to any mime type.
+						'desc'      => __('Upload any image you would like. This can even be an overlay of the video you want to use.', 'redux-framework-demo' ),
+						'subtitle'  => __('', 'redux-framework-demo'),
+					),
+				)
+			);
+
+			/* ==============================
+				Playlist
+			============================== */
+			$this->sections[] = array(
+				'title'     => __('Playlist', 'redux-framework-demo'),
+				'desc'      => __('Set the playlist for the player.', 'redux-framework-demo'),
+				'icon'      => 'el el-video',
+				'fields'    => array(
+					array(
+						'id'	=> 'site-playlist',
+						'type'	=> 'repeater',
+						'title'	=> __('Music Player Tracklist', 'redux-framework-demo'), 
+						'subtitle'	=> __('Add your links to your music that you want playing here.', 'redux-framework-demo'),
+						'desc'  => __('', 'redux-framework-demo'),
+						'limit' => 6,
+						'grouped_values' => false,
+						'fields' => array(
+							array(
+								'id' => 'title_field',
+								'type' => 'text',
+								'placeholder' => __( 'Track Title', 'redux-framework-demo' ),
+							),
+							array(
+								'id' => 'artist_field',
+								'type' => 'text',
+								'placeholder' => __( 'Artist Name', 'redux-framework-demo' ),
+							),
+							array(
+								'id' => 'mp3_field',
+								'type' => 'media',
+								'compiler'  => 'true',
+								'mode'      => false, // Can be set to false to allow any media type, or can also be set to any mime type.
+								'placeholder' => __( 'MP3 Link', 'redux-framework-demo' ),
+							),
+						),					
+					),
+				)
+			);
+                        
 			/* ==============================
 				Footer
 			============================== */

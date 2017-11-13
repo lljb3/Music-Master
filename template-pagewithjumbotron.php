@@ -23,13 +23,7 @@ global $prodhmd_theme_option;
 $trans_opt = $prodhmd_theme_option['transitional-header-button'];
 $trans_page_opt = get_post_meta($post->ID,'page_options_trans-header',true);
 ?>
-<?php if ( $trans_page_opt == 1 ) { ?> 
-    <?php if ( $prodhmd_theme_option['transitional-header-button'] ) { ?>
-        <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header', 'parts/shared/trans-header' ) ); ?>
-    <?php } ?>
-<?php } else { ?>
-    <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header', 'parts/shared/header' ) ); ?>
-<?php } ?>
+<?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header', 'parts/shared/header' ) ); ?>
 
 <!-- Jumbotron Information -->
 <div class="jumbotron" id="other">
@@ -82,7 +76,7 @@ $trans_page_opt = get_post_meta($post->ID,'page_options_trans-header',true);
     <!-- end .slider-text --></div>
     <?php $jumboimg = wp_get_attachment_url( get_post_thumbnail_id() ); ?>
     <div class="slider">
-        <?php $slidername = get_post_meta($post->ID, "layer_slider_post_class", true); ?>
+        <?php $slidername = get_post_meta($post->ID, "slidermeta-name", true); ?>
         <?php if( !empty( $slidername ) ) { layerslider($slidername); } else { echo '<div class="jumbotron-img" style="background-image:url(' . $jumboimg . ');"></div>'; } ?>
     <!-- end .slider --></div>
     <div class="slider-wash"></div>
