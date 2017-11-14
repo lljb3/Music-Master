@@ -30,7 +30,7 @@ Template Name: Template - Intro
 ?>
 
 <!-- Main Information -->
-<main <?php body_class(); ?> id="<?php echo get_page_slug(); ?>">
+<main <?php body_class(); ?> id="main">
 
 <!-- Video Information -->
 <div class="container-fluid" id="video-container">

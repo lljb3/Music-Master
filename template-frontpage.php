@@ -26,7 +26,7 @@ $trans_page_opt = get_post_meta($post->ID,'page_options_trans-header',true);
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header' ) ); ?>
 
 <!-- Main Information -->
-<main <?php body_class(); ?> id="<?php echo get_page_slug(); ?>">
+<main <?php body_class(); ?> id="main">
 
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/header' ) ); ?>
 
