@@ -1,24 +1,16 @@
 <?php
-/*
-Template Name: Single - Event Page
-*/
-?>
-
-<?php
-/**
- * The template for displaying all pages.
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site will use a
- * different template.
- *
- * Please see /external/starkers-utilities.php for info on Starkers_Utilities::get_template_parts()
- *
- * @package 	WordPress
- * @subpackage 	Starkers
- * @since 		Starkers 4.0
- */
+    /**
+     * The Template for displaying all single show posts
+     *
+     * Please see /external/starkers-utilities.php for info on Starkers_Utilities::get_template_parts()
+     *
+     * @package 	WordPress
+     * @subpackage 	Starkers
+     * @since 		Starkers 4.0
+     */
+    global $prodhmd_theme_option;
+    $attachment_id = get_post_thumbnail_id(); 
+    $bg_url = wp_get_attachment_image_src($attachment_id, 'full', false);
 ?>
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header' ) ); ?>
 

@@ -1138,7 +1138,7 @@ if (!class_exists('Redux_Framework_sample_config')) {
 					array(
 						'id'	=> 'color-footer-link',
 						'type'	=> 'color',
-						'output'	=> array('#footer-container a,#footer-container a:visited'),
+						'output'	=> array('#footer-container a,#footer-container a:visited,#footer-container a:active,#playerControls li,#playerControls li:visited,#playerControls li:active'),
 						'title'	=> __('Site Footer Link Color', 'redux-framework-demo'), 
 						'subtitle'	=> __('Site Footer Link Color (default: #70b9a0)', 'redux-framework-demo'),
 						'default'	=> '#70b9a0',
@@ -1148,7 +1148,7 @@ if (!class_exists('Redux_Framework_sample_config')) {
 					array(
 						'id'	=> 'color-footer-link-hover',
 						'type'	=> 'color',
-						'output'	=> array('#footer-container a:hover,#footer-container a:active,#footer-container a:focus'),
+						'output'	=> array('#footer-container a:hover,#footer-container a:active,#footer-container a:focus,#playerControls li:hover,#playerControls li:focus'),
 						'title'	=> __('Site Content Hover Link Color', 'redux-framework-demo'), 
 						'subtitle'	=> __('Site Content Hover Link Color (default: #70b9a0)', 'redux-framework-demo'),
 						'default'	=> '#70b9a0',

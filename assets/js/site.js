@@ -6,6 +6,7 @@
 			'angular': '/wp-content/themes/music-master/assets/js/lib/angular.min',
 			'plugins': '/wp-content/themes/music-master/assets/js/lib/plugins.min',
 			'jplayer': '/wp-content/themes/music-master/assets/js/lib/music.min',
+			'isotope': '/wp-content/themes/music-master/assets/js/lib/isotope.min',
 		},
 		shim: {
 			'rellax': {
@@ -16,7 +17,7 @@
 	if (typeof jQuery === 'function') {
 		define('jquery', function () { return jQuery; });
 	}
-	requirejs(['angular','plugins'], function() {
+	requirejs(['angular','plugins','isotope'], function() {
 		
 		// Global Vars
 		var windowHeight = $(window).innerHeight();
@@ -122,12 +123,12 @@
 				$('#listing').animate({opacity: 1.0}, 200);
 			});
 			// Filter Items on Button Click
-			$('.button-group').on( 'click', 'button', function() {
+			jQuery('.button-group').on( 'click', 'button', function() {
 				var filterValue = $(this).attr('data-filter');
-				$('.isotope').isotope({ filter: filterValue });
+				jQuery('.isotope').isotope({ filter: filterValue });
 			});
 		}
-
+	
 		// Handling Link Hash
 		function windowhash() {
 			var $hash = $(window.location.hash);
@@ -206,7 +207,7 @@
 			},
 			onAfter: function($container, $newContent) {
 				loadout();
-				musictope();
+				musictope();				
 				windowhash();
 				addBlacklistClass();
 				addBlacklistHash();

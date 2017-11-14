@@ -1,24 +1,16 @@
 <?php
-/*
-Template Name: Single - Album Page
-*/
-?>
-
-<?php
-/**
- * The template for displaying all pages.
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site will use a
- * different template.
- *
- * Please see /external/starkers-utilities.php for info on Starkers_Utilities::get_template_parts()
- *
- * @package 	WordPress
- * @subpackage 	Starkers
- * @since 		Starkers 4.0
- */
+    /**
+     * The Template for displaying all single album posts
+     *
+     * Please see /external/starkers-utilities.php for info on Starkers_Utilities::get_template_parts()
+     *
+     * @package 	WordPress
+     * @subpackage 	Starkers
+     * @since 		Starkers 4.0
+     */
+    global $prodhmd_theme_option;
+    $attachment_id = get_post_thumbnail_id(); 
+    $bg_url = wp_get_attachment_image_src($attachment_id, 'full', false);
 ?>
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header' ) ); ?>
 
@@ -31,7 +23,7 @@ Template Name: Single - Album Page
 <section class="container-fluid" id="content">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+            <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                 <div class="has-text row">
                     <div class="col-md-4">
                         <div class="album-thumb">
@@ -83,16 +75,16 @@ Template Name: Single - Album Page
                                 $pandora = get_post_meta($post_id,'album_info_pandora',true);
 
                                 if ( !empty( $itunes ) ) {
-                                    echo '<a href="' . $itunes . '" target="_blank"><span class="socicon socicon-itunes">O</span></a> ';
+                                    echo '<a href="' . $itunes . '" target="_blank"><span class="fa fa-apple"></span></a> ';
                                 }
                                 if ( !empty( $apple ) ) {
                                     echo '<a href="' . $apple . '" target="_blank"><span class="glyphicon glyphicon-music"></span></a> ';
                                 }
                                 if ( !empty( $spotify ) ) {
-                                    echo '<a href="' . $spotify . '" target="_blank"><span class="socicon socicon-spotify">o</span></a> ';
+                                    echo '<a href="' . $spotify . '" target="_blank"><span class="fa fa-spotify"></span></a> ';
                                 }
                                 if ( !empty( $gplay ) ) {
-                                    echo '<a href="' . $gplay . '" target="_blank"><span class="socicon socicon-play">L</span></a> ';
+                                    echo '<a href="' . $gplay . '" target="_blank"><span class="fa fa-google"></span></a> ';
                                 }
                                 if ( !empty( $pandora ) ) {
                                     echo '<a href="' . $pandora . '" target="_blank"><span class="glyphicon glyphicon-cd"></span></a>';
@@ -104,10 +96,15 @@ Template Name: Single - Album Page
                 <div class="has-text go-back">
                     <a href="/music">Go Back!</a>
                 </div>
-            <?php endwhile; ?>
+            <?php endwhile; endif; ?>
         <!-- end .col-md-10 --></div>
     <!-- end .row --></div>
 <!-- end #content --></section>
+
+<!-- Background Information -->
+<div class="<?php global $post; echo get_post($post)->post_name; ?>-container" id="content-bg">
+    <img src="<?php echo $bg_url[0]; ?>" class="background img-responsive center-block" />
+<!-- end #content-bg --></div>
 
 <!-- end .home --></main>
 

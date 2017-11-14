@@ -389,7 +389,11 @@ p {
 }
 @media screen and (max-width: 768px) {
 	#header-container #header-menu {
-		padding-top: 15px;
+		padding-top: 35px;
+		font-size: 50%;
+	}
+	#header-container .menu .navbar-brand {
+		padding-left: 0;
 	}
 	.navbar-nav {
 		padding-bottom: 15px;
@@ -403,11 +407,6 @@ p {
 	}	
 	.navbar-nav a span {
 		display: inline-block;
-	}
-	#header-container #site-title,
-	#header-container #site-links,
-	#header-container #credits-info {
-		font-size: 125%;
 	}
 }
 /* Fullscreen Menu Info */
@@ -478,6 +477,14 @@ p {
 }
 .navbar-toggle.collapsed .bottom-bar {
 	transform: rotate(0);
+}
+@media screen and (max-width:768px) {
+	#header-container #site-title,
+	#header-container #header-info,
+	#header-container #credits-info {
+		font-size: 100%;
+		text-align: center;
+	}
 }
 /* Social Info */
 #site-social {
@@ -759,6 +766,7 @@ p {
     position: fixed;
     top: 0;
     left: 0;
+    background-size: cover;
 }
 #main #content-bg {
 	width: 100%;
@@ -767,7 +775,7 @@ p {
 	top: 0;
 	left: 0;
 	z-index: 1;
-	background-color: #080808;
+	background-color: #000;
 }
 #main #content-bg .background {
 	min-width: 100%;
@@ -870,70 +878,26 @@ p {
 		padding-right: 15px;
 	}
 }
-/* Home Posts */
-.home #content #posts-section .post-item,
-.home #content #posts-section .post-thumbnail,
-.page-template-template-frontpage #content #posts-section .post-item,
-.page-template-template-frontpage #content #posts-section .post-thumbnail {
-    max-height: 375px;
+/* Music Info */
+#album-list {
+	margin: 0 -15px;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
 }
-.home #content #posts-section .post-item,
-.page-template-template-frontpage #content #posts-section .post-item {
-    display: block;
-    float: none;
-    margin: 0 -15px;
-    padding: 90px 50px;
-    overflow: hidden;
-}
-.home #content #posts-section .post-thumbnail,
-.page-template-template-frontpage #content #posts-section .post-thumbnail {
-    background-size: cover;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    position: absolute;
-    z-index: 1;
-    transition: all .35s ease-in-out;
-}
-.home #content #posts-section .post-item:hover .post-thumbnail,
-.page-template-template-frontpage #content #posts-section .post-item:hover .post-thumbnail {
-    transition: all .35s ease-in-out;
-}
-.home #content #posts-section .has-title,
-.page-template-template-frontpage #content #posts-section .has-title {
-    z-index: 10;
-    position: relative;
-}
-.home #content #posts-section .category,
-.page-template-template-frontpage #content #posts-section .category {
-    width: 100%;
-    float: left;
+#album-post {
     margin-bottom: 15px;
-    font-size: 85%;
-    z-index: 10;
-    color: #f8f8f8 !important;
-}
-.home #content #posts-section .post,
-.page-template-template-frontpage #content #posts-section .post {
     display: block;
     float: left;
-    width: 100%;
-    z-index: 10;
-	border-bottom: none !important;
 }
-.home #content #posts-section .read-more,
-.page-template-template-frontpage #content #posts-section .read-more {
-    display: block;
-    background: none;
-    box-shadow: none;
-    text-shadow: none !important;
-    border: 2px solid;
-    border-radius: 100px;
-    padding: 20px;
-    width: 100px;
-    height: 100px;
-    line-height: 50px;
+#album-types button {
+    background: none !important;
+    color: #f8f8f8;
+    padding-left: 0;
+    margin-bottom: 15px;
 }
 /* Contact Info */
 .wpcf7 .wpcf7-text,.wpcf7 .wpcf7-textarea {
@@ -1017,6 +981,7 @@ p {
 	border: none !important;
 }
 
+
 /* Footer Info */
 #footer-container {
 	padding: 21.5px 0;
@@ -1057,9 +1022,22 @@ p {
 }
 /* Player Info */
 #playerSongInfo {
-    margin-right: 15px;
+    margin-right: 10px;
 }
 #playerControls li {
 	padding: 0;
 	cursor: pointer;
+	transition: .2s ease-in-out all;
+}
+#playerControls li:hover {
+	transition: .2s ease-in-out all;
+}
+#jplayer-container .jp-details {
+	display: block !important;
+	margin-right: 15px;
+}
+#jplayer-container #timecode {
+    text-align: right;
+    width: auto;
+    padding-right: 10px;
 }
