@@ -8,13 +8,13 @@
 				if ( $theme_file = locate_template( array ( 'single-shows.php' ) ) ) {
 					$template_path = $theme_file;
 				} else {
-					$template_path = plugin_dir_path( __FILE__ ) . '../templates/single-shows.php';
+					$template_path = get_template_directory_uri() . 'includes/shows/templates/single-shows.php';
 				}
 			}
 			elseif( is_archive() ) {
 				if( $theme_file = locate_template( array ( 'archive-shows.php' ) ) ) {
 					$template_path = $theme_file;
-				} else { $template_path = plugin_dir_path( __FILE__ ) . '../templates/archive-shows.php';
+				} else { $template_path = get_template_directory_uri() . 'includes/shows/templates/archive-shows.php';
 	 
 				}
 			}

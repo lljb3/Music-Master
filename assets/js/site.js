@@ -42,16 +42,6 @@
 		}
 		document.onscroll = scroll;
 		
-		// Transition Navbar
-		$(document).on("scroll",function(){
-			if($(document).scrollTop() > 300){
-				$("#trans-menu").removeClass("large").addClass("small");
-			} 
-			else{
-				$("#trans-menu").removeClass("small").addClass("large");
-			}
-		});
-
 		// Navbar Dropdown
 		function is_touch_device() {
 			return 'ontouchstart' in window // Works on most browsers 

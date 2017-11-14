@@ -9,13 +9,13 @@
 				if ( $theme_file = locate_template( array ( 'single-album.php' ) ) ) {
 					$template_path = $theme_file;
 				} else {
-					$template_path = plugin_dir_path( __FILE__ ) . '../templates/single-album.php';
+					$template_path = get_template_directory_uri() . 'includes/discography/templates/single-album.php';
 				}
 			}
 			elseif ( is_archive() ) {
 				if ( $theme_file = locate_template( array ( 'archive-album.php' ) ) ) {
 					$template_path = $theme_file;
-				} else { $template_path = plugin_dir_path( __FILE__ ) . '../templates/archive-album.php';
+				} else { $template_path = get_template_directory_uri() . 'includes/discography/templates/archive-album.php';
 	 
 				}
 			}
