@@ -19,9 +19,9 @@
 	 * @subpackage 	Starkers
 	 * @since 		Starkers 4.0
 	 */
-global $prodhmd_theme_option; 
-$trans_opt = $prodhmd_theme_option['transitional-header-button'];
-$trans_page_opt = get_post_meta($post->ID,'page_options_trans-header',true);
+    global $prodhmd_theme_option;
+    $attachment_id = get_post_thumbnail_id(); 
+    $bg_url = wp_get_attachment_image_src($attachment_id, 'full', false);
 ?>
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header' ) ); ?>
 

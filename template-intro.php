@@ -64,6 +64,6 @@ Template Name: Template - Intro
     <!-- end .body-class --></div>
 <!-- end #video-container --></div>
 
-<!-- end .intro --></main>
+<!-- end .home --></main>
 
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-footer' ) ); ?>

@@ -4,19 +4,19 @@
 /* Social Icons Info */
 .fa {
     font-family: 'FontAwesome' !important;
-	font-weight: 100 !important;
-	font-size: 16px;
-	line-height: normal;
-	text-align: center;
-	padding: 8px 0px;
-	width: 32px;
-	height: 32px;
+    font-weight: 400 !important;
+    font-size: 100%;
+    line-height: normal;
+    text-align: center;
+    padding: 8px 0px;
+    width: 32px;
+    height: 32px;
     border-radius: 24px;
     color: #f8f8f8;
     display: inline-block;
-	transition: .5s background ease-in-out;
-	-moz-transition: .5s background ease-in-out;
-	-webkit-transition: .5s background ease-in-out;
+    transition: .5s background ease-in-out;
+    -moz-transition: .5s background ease-in-out;
+    -webkit-transition: .5s background ease-in-out;
 }
 .fa.facebook {
     background: #3b5998;
@@ -63,7 +63,6 @@ body {
 h1,h2,h3,h4,h5,h6 {
 	display: inline-block; 
 	width: 100%; 
-	text-transform: none !important;
 }
 h1 { font-size: 3em; }
 h2 { font-size: 2em; }
@@ -246,7 +245,7 @@ p {
 	left: 0;
 }
 #header-container #header-menu {
-	padding-top: 0px;
+	padding-top: 20%;
 }
 #header-container .navbar-brand {
 	margin: 0px;
@@ -313,6 +312,8 @@ p {
 }
 #header-container .menu .navbar-brand {
 	margin: 15px 0 5px;
+	position: absolute;
+    z-index: 9000;
 }
 /* Toggle Info */
 .navbar-toggle {
@@ -339,7 +340,7 @@ p {
 }
 /* Menu Item Info */
 .navbar-nav {
-	padding: 15px 0px 30px;
+	padding: 15px 0px 0;
 	margin: 7.5px 0px;
     width: 100%;
 }
@@ -350,10 +351,15 @@ p {
 	margin: 0px;
 	margin-bottom: 15px;
 	padding: 0px;
-	width: 100%;
+	float: left;
+	width: 25%;
 }
 .navbar-nav li:last-child {
 	margin-bottom: 0px;
+}
+.navbar-nav h2 {
+	margin: 0;
+	transition: .2s ease-in-out color;
 }
 .navbar-nav a {
 	font-size: 175%;
@@ -388,6 +394,13 @@ p {
 	.navbar-nav {
 		padding-bottom: 15px;
 	}
+	.navbar-nav li {
+		width: 100%;
+		text-align: center;
+	}
+	.navbar-nav h2 {
+		margin: 0;
+	}	
 	.navbar-nav a span {
 		display: inline-block;
 	}
@@ -400,38 +413,40 @@ p {
 /* Fullscreen Menu Info */
 #header-collapse.in {
 	position: fixed;
-    width: 100%;
-    min-height: 100%;
+	width: 100%;
+	min-height: 100%;
 	max-height: 100%;
-    top: 0;
-    left: 0;
+	top: 0;
+	left: 0;
 	margin: 0;
-    background: rgba(25,25,25,0.9);
+	background: rgba(25,25,25,0.9);
+	transition: all .5s ease-in-out;
 }
 #header-collapse {
-	position: absolute;
+	position: fixed;
 	width: 100%;
 	top: 0;
-	padding: 25px;
+	left: 0;
+	padding: 25px 15px;
+	transition: .5s ease-in-out all;
 }
 #header-collapse.in #header-menu,
 #header-collapse.in #header-info,
 #header-collapse.in #credits-info {
 	opacity: 1;
-	-webkit-transform: rotateX(0deg);
-    transform: rotateX(0deg);
+	-webkit-transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
 }
 #header-collapse #header-menu,
 #header-collapse #header-info,
 #header-collapse #credits-info {
 	opacity: 0;
-	-webkit-transform: translateY(-2%) rotateX(1deg);
-    transform: translateY(-2%) rotateX(1deg);
-    -webkit-transition: -webkit-transform 0.2s, opacity 0.2s;
-    transition: transform 0.2s, opacity 0.2s;
+    -webkit-transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
 }
 #header-collapse #credits-info {
 	font-size: 100%;
+	margin-top: 15px;
 }
 .navbar-toggle.collapsed {
 	width: 60px;
@@ -466,8 +481,8 @@ p {
 }
 /* Social Info */
 #site-social {
-	padding: 7px 15px;
-	margin: 5px 0;
+	padding: 7px 0;
+	margin: 5px -15px;
 }
 #site-social li {
 	float: left;
@@ -736,7 +751,7 @@ p {
 
 
 /* Content Info */
-main {
+#main {
     width: 100%;
     height: 100%;
     padding: 75px 0;
@@ -745,14 +760,34 @@ main {
     top: 0;
     left: 0;
 }
+#main #content-bg {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	background-color: #080808;
+}
+#main #content-bg .background {
+	min-width: 100%;
+	min-height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
 #content,#section-container section {
 	display: block;
 	padding: 0 15px;
 	z-index: 10;
 	width: 100%;
-    height: 100%;
-    margin: 0px;
-    overflow-y: auto;
+	height: 100%;
+	margin: 0px;
+	overflow-y: auto;
+	background-size: cover;
 }
 #content .widget ul {
     list-style-type: none;

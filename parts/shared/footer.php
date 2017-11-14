@@ -1,16 +1,6 @@
 
 <?php 
 	global $prodhmd_theme_option;
-	$copyright = $prodhmd_theme_option['copyright'];
-	$facebook = $prodhmd_theme_option['social-facebook'];
-	$twitter = $prodhmd_theme_option['social-twitter'];
-	$google = $prodhmd_theme_option['social-google'];
-	$linkedin = $prodhmd_theme_option['social-linkedin'];
-	$pinterest = $prodhmd_theme_option['social-pinterest'];
-	$instagram = $prodhmd_theme_option['social-instagram'];
-	$youtube = $prodhmd_theme_option['social-youtube'];
-	$skype = $prodhmd_theme_option['social-skype'];
-	$yelp = $prodhmd_theme_option['social-yelp'];
 ?>
 	
 <?php if ( $prodhmd_theme_option['footer-show-up-button'] ) { ?>

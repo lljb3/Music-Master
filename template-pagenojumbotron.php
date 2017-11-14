@@ -1,27 +1,27 @@
 <?php
-/*
-Template Name: Template - No Jumbotron Page
-*/
+    /*
+    Template Name: Template - No Jumbotron Page
+    */
 ?>
 
 <?php
-/**
- * The template for displaying all pages.
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site will use a
- * different template.
- *
- * Please see /external/starkers-utilities.php for info on Starkers_Utilities::get_template_parts()
- *
- * @package 	WordPress
- * @subpackage 	Starkers
- * @since 		Starkers 4.0
- */
-global $prodhmd_theme_option; 
-$trans_opt = $prodhmd_theme_option['transitional-header-button'];
-$trans_page_opt = get_post_meta($post->ID,'page_options_trans-header',true);
+    /**
+     * The template for displaying all pages.
+     *
+     * This is the template that displays all pages by default.
+     * Please note that this is the WordPress construct of pages
+     * and that other 'pages' on your WordPress site will use a
+     * different template.
+     *
+     * Please see /external/starkers-utilities.php for info on Starkers_Utilities::get_template_parts()
+     *
+     * @package 	WordPress
+     * @subpackage 	Starkers
+     * @since 		Starkers 4.0
+     */
+    global $prodhmd_theme_option;
+    $attachment_id = get_post_thumbnail_id(); 
+    $bg_url = wp_get_attachment_image_src($attachment_id, 'full', false);
 ?>
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header' ) ); ?>
 
@@ -41,6 +41,11 @@ $trans_page_opt = get_post_meta($post->ID,'page_options_trans-header',true);
         <!-- end .col-md-10 --></div>
     <!-- end .row --></div>
 <!-- end #content --></section>
+
+<!-- Background Information -->
+<div class="<?php global $post; echo get_post($post)->post_name; ?>-container" id="content-bg">
+    <img src="<?php echo $bg_url[0]; ?>" class="background img-responsive center-block" />
+<!-- end #content-bg --></div>
 
 <!-- end .home --></main>
 
