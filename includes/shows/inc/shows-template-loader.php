@@ -7,15 +7,11 @@
 				// otherwise serve the file from the plugin
 				if ( $theme_file = locate_template( array ( 'single-shows.php' ) ) ) {
 					$template_path = $theme_file;
-				} else {
-					$template_path = get_template_directory_uri() . 'includes/shows/templates/single-shows.php';
 				}
 			}
 			elseif( is_archive() ) {
 				if( $theme_file = locate_template( array ( 'archive-shows.php' ) ) ) {
 					$template_path = $theme_file;
-				} else { $template_path = get_template_directory_uri() . 'includes/shows/templates/archive-shows.php';
-	 
 				}
 			}
 		}

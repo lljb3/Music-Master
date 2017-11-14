@@ -14,8 +14,11 @@
      * @since 		Starkers 4.0
      */
     global $prodhmd_theme_option;
-    $attachment_id = get_post_thumbnail_id(); 
-    $bg_url = wp_get_attachment_image_src($attachment_id, 'full', false);
+    $slug_id = get_id_by_slug('shows');
+    $slug_attachment_id = get_post_thumbnail_id($slug_id);
+    $attachment_id = get_post_thumbnail_id();
+    $bg_url = wp_get_attachment_image_src($slug_attachment_id, 'full', false);
+    $img_url = wp_get_attachment_image_src($attachment_id, 'full', false);
 ?>
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header' ) ); ?>
 
@@ -29,12 +32,12 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <?php if ( have_posts() ): ?>
-                <h3 class="has-title archive-title"> Upcoming Shows</h3>	
-                <ol class="row isotope">
+                <h1 class="has-title archive-title"> Upcoming Shows</h1>	
+                <ol class="row isotope" id="show-list">
                     <?php while ( have_posts() ) : the_post(); ?>
                         <li class="col-md-4 isotope-item transition" id="news-post" data-category="transition">
                             <article class="post">
-                                <h4 class="has-title"><a href="<?php esc_url( the_permalink() ); ?>" title="Permalink to <?php the_title(); ?>" rel="bookmark"><?php the_title(); ?></a></h4>
+                                <h2 class="has-title"><a href="<?php esc_url( the_permalink() ); ?>" title="Permalink to <?php the_title(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
                                 <div class="has-text">
                                     <time datetime="<?php the_time( 'Y-m-d' ); ?>" pubdate>
                                         <?php 
@@ -61,6 +64,11 @@
         <!-- end .col-md-10 --></div>
     <!-- end .row --></div>
 <!-- end #content --></section>
+
+<!-- Background Information -->
+<div class="<?php global $post; echo get_post($post)->post_name; ?>-container" id="content-bg">
+    <img src="<?php echo $bg_url[0]; ?>" class="background img-responsive center-block" />
+<!-- end #content-bg --></div>
 
 <!-- end .home --></main>
 

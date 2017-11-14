@@ -14,8 +14,11 @@
      * @since 		Starkers 4.0
      */
     global $prodhmd_theme_option;
-    $attachment_id = get_post_thumbnail_id(); 
-    $bg_url = wp_get_attachment_image_src($attachment_id, 'full', false);
+    $slug_id = get_id_by_slug('music');
+    $slug_attachment_id = get_post_thumbnail_id($slug_id);
+    $attachment_id = get_post_thumbnail_id();
+    $bg_url = wp_get_attachment_image_src($slug_attachment_id, 'full', false);
+    $img_url = wp_get_attachment_image_src($attachment_id, 'full', false);
 ?>
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header' ) ); ?>
 
@@ -67,6 +70,11 @@
         <!-- end .col-md-10 --></div>
     <!-- end .row --></div>
 <!-- end #content --></section>
+
+<!-- Background Information -->
+<div class="<?php global $post; echo get_post($post)->post_name; ?>-container" id="content-bg">
+    <img src="<?php echo $bg_url[0]; ?>" class="background img-responsive center-block" />
+<!-- end #content-bg --></div>
 
 <!-- end .home --></main>
 

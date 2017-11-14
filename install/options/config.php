@@ -1070,14 +1070,6 @@ if (!class_exists('Redux_Framework_sample_config')) {
 	            'icon'      => 'el el-wrench',
 	            'fields'    => array(
 					array(
-						'id' => 'footer-sitemap',
-						'type'	=> 'checkbox',
-						'title'	=> __('Show Sitemap on Footer', 'redux-framework-demo'),
-						'subtitle'	=> __('', 'redux-framework-demo'),
-						'desc'	=> __('', 'redux-framework-demo'),
-						'default' => 0
-					),
-					array(
 						'id'	=> 'color-footer-background',
 						'type'	=> 'background',
 						'output'	=> array('#footer-sitemap'),
