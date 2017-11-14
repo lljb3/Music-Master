@@ -22,6 +22,13 @@
 		var windowHeight = $(window).innerHeight();
 		var menu = $('#header-container');
 		var origOffsetY = menu.offset().top;
+
+		// Preloader
+		$(window).load(function() {
+			$(this).scrollTop();
+			$('#loader').delay(350).fadeOut('slow');
+			$('body').delay(350).css({'overflow':'visible'});
+		});
 		
 		// Sticky Header
 		function scroll() {
@@ -185,7 +192,9 @@
 		// Smooth State AJAX
 		$('main').smoothState({
 			blacklist: '.nosmoothstate, .fancybox',
-			onBefore: function($anchor, $container) {},
+			onBefore: function($anchor, $container) {
+				loadout();
+			},
 			onStart: {
 				duration: 350,
 				render: function ($container) {
@@ -211,7 +220,6 @@
 				windowhash();
 				addBlacklistClass();
 				addBlacklistHash();
-				externallinkage.init();
 			}
 		});
 
@@ -241,6 +249,7 @@
 				var extLink = href.replace(/^https?\:\/\//i, '');
 			}
 		});
+		externallinkage.init();
 
 		// AnivewJS Options
 		var options = {
