@@ -23,10 +23,12 @@ global $prodhmd_theme_option;
 $trans_opt = $prodhmd_theme_option['transitional-header-button'];
 $trans_page_opt = get_post_meta($post->ID,'page_options_trans-header',true);
 ?>
-<?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header', 'parts/shared/header' ) ); ?>
+<?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header' ) ); ?>
 
 <!-- Main Information -->
 <main <?php body_class(); ?> id="<?php echo get_page_slug(); ?>">
+
+<?php Starkers_Utilities::get_template_parts( array( 'parts/shared/header' ) ); ?>
 
 <!-- Jumbotron Information -->
 <div class="jumbotron" id="home">
