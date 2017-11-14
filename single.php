@@ -14,7 +14,7 @@
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
 <!-- Main Information -->
-<main <?php body_class(); ?> id="single">
+<main <?php body_class(); ?> id="main">
 
 <!-- Container Information -->
 <div class="container-fluid" id="content">

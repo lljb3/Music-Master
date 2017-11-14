@@ -12,7 +12,7 @@
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header', 'parts/shared/header' ) ); ?>
 
 <!-- Main Information -->
-<main <?php body_class(); ?> id="category">
+<main <?php body_class(); ?> id="main">
 
 <!-- Container Information -->
 <div class="container-fluid" id="content">
