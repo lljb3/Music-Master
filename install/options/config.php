@@ -237,7 +237,7 @@ if (!class_exists('Redux_Framework_sample_config')) {
 						'background-attachment'	=> false,
 						'background-position'	=> false,
 						'background-image'	=> false,
-						'transparent'	=> false,
+						'transparent'	=> true,
 						'background-size'	=> false,
 					), 
 					array(
@@ -251,7 +251,7 @@ if (!class_exists('Redux_Framework_sample_config')) {
 						'background-attachment'	=> false,
 						'background-position'	=> false,
 						'background-image'	=> false,
-						'transparent'	=> false,
+						'transparent'	=> true,
 						'background-size'	=> false,
 					), 
 					array(
@@ -334,7 +334,7 @@ if (!class_exists('Redux_Framework_sample_config')) {
 			/* ==============================
 				Header
 			============================== */
-			$kakeoptions = get_option('prodhmd_theme_option');
+			$prodhmdoptions = get_option('prodhmd_theme_option');
 			$this->sections[] = array(
 	            'title'     => __('Header', 'redux-framework-demo'),
 	            'desc'      => __('The header. Make sure to double check every section.', 'redux-framework-demo'),
@@ -353,126 +353,6 @@ if (!class_exists('Redux_Framework_sample_config')) {
 						'background-image'	=> false,
 						'transparent'	=> false,
 						'background-size'	=> false,
-					),
-					array(
-						'id'   =>'section-start',
-						'title' => __('Transitional Header Options', 'redux-framework-demo'),
-						'subtitle' => __('Update the trans header with these options.', 'redux-framework-demo'),
-						'type' => 'section',
-						'indent' => true,
-					),
-					array(
-						'id'	=> 'transitional-header-button',
-						'type'	=> 'checkbox',
-						'title'	=> __('Transitional Header', 'redux-framework-demo'),
-						'subtitle'	=> __('Make Header on Home Page Transitional', 'redux-framework-demo'),
-						'desc'	=> __('', 'redux-framework-demo'),
-						'default'	=> 1
-					),
-					// Trans Header Options
-					array(
-						'id'   => 'color-trans-header-border',
-						'type' => 'border',
-						'hidden' => ($kakeoptions['transitional-header-button'] == 0) ? true : false,
-						'title' => __('Trans Header Border Color', 'redux-framework-demo'),
-						'subtitle' => __('Change Trans Header Border Color'),
-						'desc'	=> __('', 'redux-framework-demo'),
-						'output' => array('#trans-menu.large'),
-						'default'  => array(
-							'border-color'  => '#c8c8c8', 
-							'border-style'  => 'solid', 
-							'border-bottom' => '1px', 
-						),
-						'all' => false,
-						'left' => false,
-						'right' => false,
-						'top' => false,
-						'bottom' => true,
-						'style' => true,
-						'color' => true,
-					),
-					array(
-						'id'   => 'color-trans-header-background',
-						'type' => 'background',
-						'hidden' => ($kakeoptions['transitional-header-button'] == 0) ? true : false,
-						'title' => __('Trans Header Background Color', 'redux-framework-demo'),
-						'subtitle' => __('Change Header Background Color'),
-						'output' => array('#trans-menu.large'),
-						'background-repeat'	=> false,
-						'background-attachment'	=> false,
-						'background-position'	=> false,
-						'background-image'	=> false,
-						'transparent'	=> false,
-						'background-size'	=> false,
-					),
-					array(
-						'id'	=> 'color-trans-header',
-						'type'	=> 'color',
-						'hidden' => ($kakeoptions['transitional-header-button'] == 0) ? true : false,
-						'title'	=> __('Trans Header Color', 'redux-framework-demo'), 
-						'subtitle'	=> __('Trans Header Color (default: #ffffff)', 'redux-framework-demo'),
-						'default'	=> '#ffffff',
-						'output' => array('#trans-menu.large'),
-						'validate'	=> 'color',
-						'transparent'	=> false,
-					),
-					array(
-						'id'	=> 'typography-header',
-						'type'	=> 'typography',
-						'hidden' => ($kakeoptions['transitional-header-button'] == 0) ? true : false,
-						'title'	=> __('Typography Trans Header', 'redux-framework-demo'),
-						'google'	=> true,
-						'fonts'		=> $custom_fonts,
-						'ext-font-css' => $theme_url . '/style.css',
-						'font-backup'	=> true,
-						'font-style'	=> true,
-						'font-weight'	=> true,
-						'text-align'	=> false,
-						'text-transform' => true,
-						//'subsets'	=> false, // Only appears if google is true and subsets not set to false
-						'font-size'	=> true,
-						'line-height'	=> true,
-						'word-spacing'	=> true, // Defaults to false
-						'letter-spacing'	=> true, // Defaults to false
-						'color'	=> true,
-						//'preview'	=> false, // Disable the previewer
-						'all_styles' => true, // Enable all Google Font style/weight variations to be added to the page
-						'output' => array('#trans-menu.large'), // An array of CSS selectors to apply this font style to dynamically
-						'units'	=> 'em', // Defaults to px
-						'subtitle'	=> __('', 'redux-framework-demo'),
-						'default'	=> array(
-							'font-family'	=> 'Roboto',
-							'font-style'	=> '400',
-							'google'	=> true,
-							'color'	=> '#242424'
-						),
-					),
-					array(
-						'id'	=> 'color-trans-header-link',
-						'type'	=> 'color',
-						'hidden' => ($kakeoptions['transitional-header-button'] == 0) ? true : false,
-						'title'	=> __('Trans Header Link Color', 'redux-framework-demo'),
-						'output'	=> array('#trans-menu.large a,#trans-menu.large a:visited,#trans-menu.large a:focus,#trans-menu.large .fa,#trans-menu.large .fa:visited,#trans-menu.large .fa:focus'),
-						'subtitle'	=> __('Trans Header Link Color (default: #70b9a0)', 'redux-framework-demo'),
-						'default'	=> '#70b9a0',
-						'validate'	=> 'color',
-						'transparent'	=> false,
-					),
-					array(
-						'id'	=> 'color-trans-header-link-hover',
-						'type'	=> 'color',
-						'hidden' => ($kakeoptions['transitional-header-button'] == 0) ? true : false,
-						'title'	=> __('Trans Content Hover Link Color', 'redux-framework-demo'), 
-						'output'	=> array('#trans-menu.large a:hover,#trans-menu.large a:active,#trans-menu.large .fa:hover,#trans-menu.large .fa:active'),
-						'subtitle'	=> __('Trans Content Hover Link Color (default: #70b9a0)', 'redux-framework-demo'),
-						'default'	=> '#70b9a0',
-						'validate'	=> 'color',
-						'transparent'	=> false,
-					),
-					array(
-						'id'     => 'section-end',
-						'type'   => 'section',
-						'indent' => false,
 					),
 					// Header Options
 					array(
@@ -501,11 +381,12 @@ if (!class_exists('Redux_Framework_sample_config')) {
 						'bottom' => true,
 						'style' => true,
 						'color' => true,
+						'transparent' => true,
 					),
 					array(
 						'id'	=> 'color-header-background',
 						'type'	=> 'background',
-						'output'	=> array('#trans-menu.small, header .navbar, header .navbar .navbar-nav > ul > li ul.sub-menu, header .navbar nav > div > ul > li ul.sub-menu, #header-menu, #trans-menu .visible-xs .navbar-collapse, header .dropdown-menu'),
+						'output'	=> array('#header-collapse.in'),
 						'title'	=> __('Site Header Background Color', 'redux-framework-demo'),
 						'subtitle'	=> __('Site Header Background Color (default: #333333)', 'redux-framework-demo'),
 						'default'	=> array( 'background-color' => '#333333' ),
@@ -513,8 +394,9 @@ if (!class_exists('Redux_Framework_sample_config')) {
 						'background-attachment'	=> false,
 						'background-position'	=> false,
 						'background-image'	=> false,
-						'transparent'	=> false,
+						'transparent'	=> true,
 						'background-size'	=> false,
+						'opacity' => true,
 					),
 					array(
 						'id'	=> 'color-header',
@@ -559,7 +441,7 @@ if (!class_exists('Redux_Framework_sample_config')) {
 						'id'	=> 'color-header-link',
 						'type'	=> 'color',
 						'title'	=> __('Site Header Link Color', 'redux-framework-demo'),
-						'output'	=> array('header a,header a:visited,header a:focus,header .fa,header .fa:visited,header .fa:focus,#header-container a,#header-container a:visited,#header-container a:focus,#trans-menu.small a,#trans-menu.small a:visited,#trans-menu.small a:focus'),
+						'output'	=> array('#header-container a,#header-container a:visited,#header-container a:active,#header-container a h2,#header-container a:visited h2,#header-container a:active h2,'),
 						'subtitle'	=> __('Site Header Link Color (default: #70b9a0)', 'redux-framework-demo'),
 						'default'	=> '#70b9a0',
 						'validate'	=> 'color',
@@ -569,7 +451,7 @@ if (!class_exists('Redux_Framework_sample_config')) {
 						'id'	=> 'color-header-link-hover',
 						'type'	=> 'color',
 						'title'	=> __('Site Content Hover Link Color', 'redux-framework-demo'), 
-						'output'	=> array('header a:hover,header a:active,#header-container a:hover,#header-container a:focus,#trans-menu.small a:hover,#trans-menu.small a:active'),
+						'output'	=> array('#header-container a:hover,#header-container a:focus,#header-container a:hover h2,#header-container a:focus h2'),
 						'subtitle'	=> __('Site Content Hover Link Color (default: #70b9a0)', 'redux-framework-demo'),
 						'default'	=> '#70b9a0',
 						'validate'	=> 'color',
@@ -961,118 +843,6 @@ if (!class_exists('Redux_Framework_sample_config')) {
 	            'desc' => __('This is to cover the typography that consist of the buttons and map icons on the body.', 'redux-framework-demo'),
 	            'icon' => 'el el-book',
 	            'fields' => array(
-					array(
-						'id'   =>'section-start',
-						'title' => __('Blog Post Options', 'redux-framework-demo'),
-						'subtitle' => __('Update the home page blog post visuals with these options.', 'redux-framework-demo'),
-						'type' => 'section',
-						'indent' => true,
-					),
-					array(
-						'id' => 'content-posts-container',
-						'type'	=> 'checkbox',
-						'title'	=> __('Show Posts on Front Page', 'redux-framework-demo'),
-						'subtitle'	=> __('', 'redux-framework-demo'),
-						'desc'	=> __('', 'redux-framework-demo'),
-						'default' => 1
-					),
-					// Blog Posts Options
-					array(
-						'id' => 'blog-posts-number-of',
-						'type' => 'slider',
-						//'hidden' => ($kakeoptions['content-posts-container'] == 0) ? true : false,
-						'title'	=> __('Number of Blog Posts', 'redux-framework-demo'),
-						'subtitle'	=> __('Set the number of blog posts to generate', 'redux-framework-demo'),
-						'desc'	=> __('Do not choose 5 or 7 unless you want to be uneven on the bottom.', 'redux-framework-demo'),
-						'default' => 3,
-						'min' => 3,
-						'step' => 1,
-						'max' => 9,
-						'resolution' => 1,
-						'display_value' => 'text'
-					),
-					array(
-						'id' => 'blog-posts-category',
-						'type' => 'text',
-						'title' => __('Front Page Blog Posts Category', 'redux-framework-demo'),
-						'subtitle'  => __('Write which category of blog posts that will appear on front page.', 'redux-framework-demo'),
-						'desc' => __('eg: category1, category2, ...', 'redux-framework-demo'),
-					),
-					array(
-						'id' => 'color-blog-posts-background',
-						'type'	=> 'background',
-						'output' => array('.home #content #posts-section .post-item,.page-template-template-frontpage #content #posts-section .post-item'),
-						'title'	=> __('Blog Post Background', 'redux-framework-demo'),
-						'subtitle'	=> __('Handles read more image background color wash (default: #333)', 'redux-framework-demo'),
-						'default'	=> array( 'background-color' => '#333' ),
-						'background-repeat'	=> false,
-						'background-attachment'	=> false,
-						'background-position'	=> false,
-						'background-image'	=> false,
-						'transparent'	=> false,
-						'background-size'	=> false,
-					),
-					array(
-						'id' => 'color-blog-posts-header',
-						'type'	=> 'color',
-						'title'	=> __('Blog Post Header Color', 'redux-framework-demo'), 
-						'subtitle'	=> __('Handles read more button border colors (default: #70b9a0)', 'redux-framework-demo'),
-						'default'	=> '#70b9a0',
-						'validate'	=> 'color',
-						'output' => array('.home #content #posts-section .post-item .has-title,.page-template-template-frontpage #content #posts-section .post-item .has-item'), // An array of CSS selectors to apply this font style to dynamically
-						'transparent'	=> false,
-					),
-					array(
-						'id' => 'color-blog-posts-header-hover',
-						'type'	=> 'color',
-						'title'	=> __('Blog Post Header Hover Color', 'redux-framework-demo'), 
-						'subtitle'	=> __('Handles read more button border colors (default: #70b9a0)', 'redux-framework-demo'),
-						'default'	=> '#70b9a0',
-						'validate'	=> 'color',
-						'output' => array('.home #content #posts-section .post-item .has-title:hover,.page-template-template-frontpage #content #posts-section .post-item .has-item:hover'), // An array of CSS selectors to apply this font style to dynamically
-						'transparent'	=> false,
-					),
-					array(
-						'id' => 'color-blog-posts-read-more-bg',
-						'type'	=> 'color',
-						'title'	=> __('Read More Button Border Color', 'redux-framework-demo'), 
-						'subtitle'	=> __('Handles read more button border colors (default: #70b9a0)', 'redux-framework-demo'),
-						'default'	=> '#70b9a0',
-						'validate'	=> 'color',
-						'transparent'	=> false,
-					),
-					array(
-						'id' => 'color-blog-posts-read-more-bg-hover',
-						'type'	=> 'color',
-						'title'	=> __('Read More Button Background Color Hover', 'redux-framework-demo'), 
-						'subtitle'	=> __('Handles read more hover button background colors (default: #70b9a0)', 'redux-framework-demo'),
-						'default'	=> '#70b9a0',
-						'validate'	=> 'color',
-						'transparent'	=> false,
-					),
-					array(
-						'id' => 'color-blog-posts-read-more-text',
-						'type'	=> 'color',
-						'title'	=> __('Read More Button Link Color', 'redux-framework-demo'), 
-						'subtitle'	=> __('Handles read more button text colors (default: #70b9a0)', 'redux-framework-demo'),
-						'default'	=> '#70b9a0',
-						'validate'	=> 'color',
-						'transparent'	=> false,
-					),
-					array(
-						'id' => 'color-blog-posts-read-more-text-hover',
-						'type'	=> 'color',
-						'title'	=> __('Read More Button Hover Link Color', 'redux-framework-demo'), 
-						'subtitle'	=> __('Handles read more hover button text colors (default: #f8f8f8)', 'redux-framework-demo'),
-						'default'	=> '#f8f8f8',
-						'validate'	=> 'color',
-						'transparent'	=> false,
-					),
-					array(
-						'id'     => 'section-end',
-						'type'   => 'section',
-						'indent' => false,
-					),
 					// Button Options
 					array(
 						'id'   =>'section-start',
@@ -1157,7 +927,140 @@ if (!class_exists('Redux_Framework_sample_config')) {
 					),
 				),
 			);
+
+			/* ==============================
+				Intro
+			============================== */
+			$this->sections[] = array(
+				'title'     => __('Intro Page', 'redux-framework-demo'),
+				'desc'      => __('Set these parameters to customize the intro page.', 'redux-framework-demo'),
+				'icon'      => 'el el-video-chat',
+				'fields'    => array(
+					array(
+						'id' => 'intro-loader',
+						'type'	=> 'checkbox',
+						'title'	=> __('Activate Intro Loader', 'redux-framework-demo'),
+						'subtitle'	=> __('', 'redux-framework-demo'),
+						'desc'	=> __('', 'redux-framework-demo'),
+						'default' => 0
+					),
+					array(
+						'id'	=> 'intro-video',
+						'type'	=> 'text',
+						'title'     => __('Intro Video', 'redux-framework-demo'),
+						'validate'  => 'url',
+						'desc'      => __('Place your video link here. You can use a Media Library link as well.', 'redux-framework-demo' ),
+						'subtitle'  => __('', 'redux-framework-demo'),
+					),
+					array(
+						'id'	=> 'intro-text',
+						'type'	=> 'text',
+						'title'     => __('Intro Text', 'redux-framework-demo'),
+						'validate'  => 'text',
+						'desc'      => __('Type your video title here. Or anything, really.', 'redux-framework-demo' ),
+						'subtitle'  => __('', 'redux-framework-demo'),
+					),
+				)
+			);
             
+			/* ==============================
+				Page Loader
+			============================== */
+			$this->sections[] = array(
+				'title'     => __('Page Loader', 'redux-framework-demo'),
+				'desc'      => __('Set these parameters to customize the loading screen in between pages.', 'redux-framework-demo'),
+				'icon'      => 'el el-screen',
+				'fields'    => array(
+					array(
+						'id' => 'page-loader',
+						'type'	=> 'checkbox',
+						'title'	=> __('Activate Page Loader', 'redux-framework-demo'),
+						'subtitle'	=> __('', 'redux-framework-demo'),
+						'desc'	=> __('', 'redux-framework-demo'),
+						'default' => 0
+					),
+					array(
+						'id' => 'loader-background',
+						'type'	=> 'background',
+						'output'	=> array('#loader'),
+						'title'	=> __('Button Background', 'redux-framework-demo'),
+						'subtitle'	=> __('Handles all button colors (default: #242424)', 'redux-framework-demo'),
+						'default'	=> array( 'background-color' => '#242424' ),
+						'background-repeat'	=> false,
+						'background-attachment'	=> false,
+						'background-position'	=> false,
+						'background-image'	=> false,
+						'transparent'	=> false,
+						'background-size'	=> false,
+					),
+					array(
+						'id'	=> 'loader-video',
+						'type'	=> 'text',
+						'title'     => __('Loader Video', 'redux-framework-demo'),
+						'validate'  => 'url',
+						'desc'      => __('Place your video link here. You can use a Media Library link as well.', 'redux-framework-demo' ),
+						'subtitle'  => __('', 'redux-framework-demo'),
+					),
+					array(
+						'id'	=> 'loader-image',
+						'type'	=> 'media',
+						'title'     => __('Loader Image', 'redux-framework-demo'),
+						'compiler'  => 'true',
+						'mode'      => false, // Can be set to false to allow any media type, or can also be set to any mime type.
+						'desc'      => __('Upload any image you would like. This can even be an overlay of the video you want to use.', 'redux-framework-demo' ),
+						'subtitle'  => __('', 'redux-framework-demo'),
+					),
+					array(
+						'id'	=> 'loader-mobile-image',
+						'type'	=> 'media',
+						'title'     => __('Loader Mobile Image', 'redux-framework-demo'),
+						'compiler'  => 'true',
+						'mode'      => false, // Can be set to false to allow any media type, or can also be set to any mime type.
+						'desc'      => __('Upload any image you would like. This can even be an overlay of the video you want to use.', 'redux-framework-demo' ),
+						'subtitle'  => __('', 'redux-framework-demo'),
+					),
+				)
+			);
+
+			/* ==============================
+				Playlist
+			============================== */
+			$this->sections[] = array(
+				'title'     => __('Playlist', 'redux-framework-demo'),
+				'desc'      => __('Set the playlist for the player.', 'redux-framework-demo'),
+				'icon'      => 'el el-video',
+				'fields'    => array(
+					array(
+						'id'	=> 'site-playlist',
+						'type'	=> 'repeater',
+						'title'	=> __('Music Player Tracklist', 'redux-framework-demo'), 
+						'subtitle'	=> __('Add your links to your music that you want playing here.', 'redux-framework-demo'),
+						'desc'  => __('', 'redux-framework-demo'),
+						'limit' => 6,
+						'grouped_values' => false,
+						'fields' => array(
+							array(
+								'id' => 'title_field',
+								'type' => 'text',
+								'placeholder' => __( 'Track Title', 'redux-framework-demo' ),
+							),
+							array(
+								'id' => 'artist_field',
+								'type' => 'text',
+								'placeholder' => __( 'Artist Name', 'redux-framework-demo' ),
+							),
+							array(
+								'id' => 'mp3_field',
+								'type' => 'media',
+								'compiler'  => 'true',
+								'mode'      => false, // Can be set to false to allow any media type, or can also be set to any mime type.
+								'placeholder' => __( 'MP3 Link', 'redux-framework-demo' ),
+							),
+						),					
+					),
+				)
+			);
+                        
 			/* ==============================
 				Footer
 			============================== */
@@ -1166,14 +1069,6 @@ if (!class_exists('Redux_Framework_sample_config')) {
 	            'desc'      => __('The footer info. Make sure to fill every option.', 'redux-framework-demo'),
 	            'icon'      => 'el el-wrench',
 	            'fields'    => array(
-					array(
-						'id' => 'footer-sitemap',
-						'type'	=> 'checkbox',
-						'title'	=> __('Show Sitemap on Footer', 'redux-framework-demo'),
-						'subtitle'	=> __('', 'redux-framework-demo'),
-						'desc'	=> __('', 'redux-framework-demo'),
-						'default' => 0
-					),
 					array(
 						'id'	=> 'color-footer-background',
 						'type'	=> 'background',
@@ -1235,7 +1130,7 @@ if (!class_exists('Redux_Framework_sample_config')) {
 					array(
 						'id'	=> 'color-footer-link',
 						'type'	=> 'color',
-						'output'	=> array('#footer-container a,#footer-container a:visited'),
+						'output'	=> array('#footer-container a,#footer-container a:visited,#footer-container a:active,#playerControls li,#playerControls li:visited,#playerControls li:active'),
 						'title'	=> __('Site Footer Link Color', 'redux-framework-demo'), 
 						'subtitle'	=> __('Site Footer Link Color (default: #70b9a0)', 'redux-framework-demo'),
 						'default'	=> '#70b9a0',
@@ -1245,7 +1140,7 @@ if (!class_exists('Redux_Framework_sample_config')) {
 					array(
 						'id'	=> 'color-footer-link-hover',
 						'type'	=> 'color',
-						'output'	=> array('#footer-container a:hover,#footer-container a:active,#footer-container a:focus'),
+						'output'	=> array('#footer-container a:hover,#footer-container a:active,#footer-container a:focus,#playerControls li:hover,#playerControls li:focus'),
 						'title'	=> __('Site Content Hover Link Color', 'redux-framework-demo'), 
 						'subtitle'	=> __('Site Content Hover Link Color (default: #70b9a0)', 'redux-framework-demo'),
 						'default'	=> '#70b9a0',

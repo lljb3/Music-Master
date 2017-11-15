@@ -41,10 +41,17 @@
 </head>
 
 <!-- Start Site -->
-<body <?php body_class(); ?>>
+<body id="start">
 
 <!-- Facebook Root -->
 <div id="fb-root"></div>
 
 <!-- Top of Page -->
-<div id="totop"></div>
+<div class="hidden" id="totop"></div>
+
+<!-- Loader -->
+<?php if( is_page_template('template-intro.php') ) { ?>
+    <!-- Loader Not On Intro -->
+<?php } else if( $prodhmd_theme_option['page-loader'] == 1) { ?>
+	<?php require_once( 'loader.php' ); ?>
+<?php } ?>

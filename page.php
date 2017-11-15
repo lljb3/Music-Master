@@ -14,7 +14,12 @@
  * @since 		Starkers 4.0
  */
 ?>
-<?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header', 'parts/shared/header' ) ); ?>
+<?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header' ) ); ?>
+
+<!-- Main Information -->
+<main <?php body_class(); ?> id="main">
+
+<?php Starkers_Utilities::get_template_parts( array( 'parts/shared/header' ) ); ?>
 
 <!-- Container Information -->
 <div class="container-fluid" id="content">
@@ -28,5 +33,7 @@
         <!-- end .col-md-10 --></div>
     <!-- end .row --></div>
 <!-- end #content --></div>
+
+<!-- end .page --></main>
 
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/footer','parts/shared/html-footer' ) ); ?>

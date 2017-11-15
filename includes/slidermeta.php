@@ -1,82 +1,17 @@
-<?php
-	//* Slider Slug Name Meta Box *//
-	// Fire our meta box setup function on the post editor screen.
-	add_action( 'load-post.php', 'layer_slider_post_meta_boxes_setup' );
-	add_action( 'load-post-new.php', 'layer_slider_post_meta_boxes_setup' );
-	// Meta box setup function.
-	function layer_slider_post_meta_boxes_setup() {
-		// Add meta boxes on the 'add_meta_boxes' hook.
-		add_action( 'add_meta_boxes', 'layer_slider_add_post_meta_boxes' );
-		// Save post meta on the 'save_post' hook.
-		add_action( 'save_post', 'layer_slider_save_post_class_meta', 10, 2 );
-	}
-	// Create one or more meta boxes to be displayed on the post editor screen.
-	function layer_slider_add_post_meta_boxes() {
-		add_meta_box(
-			'layer_slider-post-class', // Unique ID
-			esc_html__( 'Slider Info', 'example' ), // Title
-			'layer_slider_post_class_meta_box',   // Callback function
-			'page', // Admin page (or post type)
-			'side', // Context
-			'default' // Priority
-		);
-	}
-	function layer_slider_post_class_meta_box( $object, $box ) { ?>
-	<?php wp_nonce_field( basename( __FILE__ ), 'layer_slider_post_class_nonce' ); ?>
-        <p>
-            <label for="layer_slider-post-class"><?php _e( "Set which slider this page will generate. Use the slug name of the slider only.", 'example' ); ?></label>
-            <br />
-            <input class="widefat" type="text" name="layer_slider-post-class" id="layer_slider-post-class" value="<?php echo esc_attr( get_post_meta( $object->ID, 'layer_slider_post_class', true ) ); ?>" size="30" />
-        </p>
-	<?php }
-	// Save the meta box's post metadata.
-	function layer_slider_save_post_class_meta( $post_id, $post ) {
-		// Verify the nonce before proceeding.
-		if ( !isset( $_POST['layer_slider_post_class_nonce'] ) || !wp_verify_nonce( $_POST['layer_slider_post_class_nonce'], basename( __FILE__ ) ) )
-		return $post_id;
-		// Get the post type object.
-		$post_type = get_post_type_object( $post->post_type );
-		// Check if the current user has permission to edit the post.
-		if ( !current_user_can( $post_type->cap->edit_post, $post_id ) )
-		return $post_id;
-		// Get the posted data and sanitize it for use as an HTML class.
-		$new_meta_value = ( isset( $_POST['layer_slider-post-class'] ) ? sanitize_html_class( $_POST['layer_slider-post-class'] ) : '' );
-		// Get the meta key.
-		$meta_key = 'layer_slider_post_class';
-		// Get the meta value of the custom field key.
-		$meta_value = get_post_meta( $post_id, $meta_key, true );
-		// If a new meta value was added and there was no previous value, add it.
-		if ( $new_meta_value && '' == $meta_value )
-		add_post_meta( $post_id, $meta_key, $new_meta_value, true );
-		// If the new meta value does not match the old value, update it.
-		elseif ( $new_meta_value && $new_meta_value != $meta_value )
-		update_post_meta( $post_id, $meta_key, $new_meta_value );
-		// If there is no new meta value but an old value exists, delete it.
-		elseif ( '' == $new_meta_value && $meta_value )
-		delete_post_meta( $post_id, $meta_key, $meta_value );
-	}
-	// Filter the post class hook with our custom post class function.
-	add_filter( 'post_class', 'layer_slider_post_class' );
-	function layer_slider_post_class( $classes ) {
-		/* Get the current post ID. */
-		$post_id = get_the_ID();
-		/* If we have a post ID, proceed. */
-		if ( !empty( $post_id ) ) {
-		/* Get the custom post class. */
-		$post_class = get_post_meta( $post_id, 'layer_slider_post_class', true );
-		/* If a post class was input, sanitize it and add it to the post class array. */
-		if ( !empty( $post_class ) )
-			$classes[] = sanitize_html_class( $post_class );
-		}
-		return $classes;
-	}
-	 
+<?php	 
 	/* Slider Custom Meta Box */ 
 	class Slider_Meta_Box {
 		private $screens = array(
 			'page',
 		);
 		private $fields = array(
+			array(
+				'id' => 'slidermeta-name',
+				'label' => 'Slider Slug',
+				'desc' => 'Set which slider this page will generate. Use the slug name of the slider only.',
+				'type' => 'text',
+				'std' => ''
+			),
 			array(
 				'id' => 'slidermeta-text',
 				'label' => 'Heading Text',
@@ -101,14 +36,14 @@
 			array(
 				'id' => 'slidermeta-button',
 				'label' => 'Button Text',
-				'desc' => 'Define the text in the button',
+				'desc' => 'Define the text in the button.',
 				'type' => 'text',
 				'std' => ''
 			),
 			array(
 				'id' => 'slidermeta-link',
 				'label' => 'Button Link',
-				'desc' => 'Define the link in the button',
+				'desc' => 'Define the link in the button.',
 				'type' => 'text',
 				'std' => ''
 			),
@@ -128,7 +63,7 @@
 					__( 'Slider Text', 'slidermeta-' ),
 					array( $this, 'add_meta_box_callback' ),
 					$screen,
-					'advanced',
+					'normal',
 					'high'
 				);
 			}
@@ -180,30 +115,33 @@
 				switch ( $field['type'] ) {
 					case 'media':
 						$input = sprintf(
-							'<input class="regular-text" id="%s" name="%s" type="text" value="%s"> <input class="button rational-metabox-media" id="%s_button" name="%s_button" type="button" value="Upload" />',
+							'<input class="regular-text" id="%s" name="%s" type="text" value="%s"> <input class="button rational-metabox-media" id="%s_button" name="%s_button" type="button" value="Upload" /> <p class="desc" style="font-style:italic;font-size:.8em;">%s</p>',
 							$field['id'],
 							$field['id'],
 							$db_value,
 							$field['id'],
-							$field['id']
+							$field['id'],
+							$field['desc']
 						);
 						break;
 					case 'textarea':
 						$input = sprintf(
-							'<textarea class="large-text" id="%s" name="%s" rows="5">%s</textarea>',
+							'<textarea class="large-text" id="%s" name="%s" rows="5">%s</textarea> <p class="desc" style="font-style:italic;font-size:.8em;">%s</p>',
 							$field['id'],
 							$field['id'],
-							$db_value
+							$db_value,
+							$field['desc']
 						);
 						break;
 					default:
 						$input = sprintf(
-							'<input %s id="%s" name="%s" type="%s" value="%s">',
+							'<input %s id="%s" name="%s" type="%s" value="%s"> <p class="desc" style="font-style:italic;font-size:.8em;">%s</p>',
 							$field['type'] !== 'color' ? 'class="regular-text"' : '',
 							$field['id'],
 							$field['id'],
 							$field['type'],
-							$db_value
+							$db_value,
+							$field['desc']
 						);
 				}
 				$output .= $this->row_format( $label, $input );

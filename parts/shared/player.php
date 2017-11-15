@@ -6,7 +6,7 @@
     $mp3 = $prodhmd_theme_option['mp3_field'];
 ?>
 
-<div class="col-md-6 col-xs-8 jplayer" id="jplayer-container">
+<div class="col-md-12 jplayer" id="jplayer-container">
     <div class="jplayer-inner jp-jplayer" id="jPlayer"></div>
     <div id="jPlayerContainer" class="jp-audio" role="application" aria-label="media player">
         <div class="jp-type-playlist">

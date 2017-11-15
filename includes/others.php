@@ -38,112 +38,6 @@
 	}
 	add_shortcode( 'my_content', 'get_post_page_content' );
 
-	/* Page Options Meta */
-	class Page_Options_Metabox {
-		private $screens = array(
-			'page',
-		);
-		private $fields = array(
-			array(
-				'id' => 'trans-header',
-				'label' => 'Trans Header?',
-				'type' => 'checkbox',
-			),
-		);
-		/**
-		* Class construct method. Adds actions to their respective WordPress hooks.
-		*/
-		public function __construct() {
-			add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
-			add_action( 'save_post', array( $this, 'save_post' ) );
-		}
-		/**
-		* Hooks into WordPress' add_meta_boxes function.
-		* Goes through screens (post types) and adds the meta box.
-		*/
-		public function add_meta_boxes() {
-			foreach ( $this->screens as $screen ) {
-				add_meta_box(
-					'page-options',
-					__( 'Page Options', 'page-options' ),
-					array( $this, 'add_meta_box_callback' ),
-					$screen,
-					'side',
-					'default'
-				);
-			}
-		}
-		/**
-		* Generates the HTML for the meta box
-		* @param object $post WordPress post object
-		*/
-		public function add_meta_box_callback( $post ) {
-			wp_nonce_field( 'page_options_data', 'page_options_nonce' );
-			$this->generate_fields( $post );
-		}
-		/**
-		* Generates the field's HTML for the meta box.
-		*/
-		public function generate_fields( $post ) {
-			$output = '';
-			foreach ( $this->fields as $field ) {
-				$label = '<label for="' . $field['id'] . '">' . $field['label'] . '</label>';
-				$db_value = get_post_meta( $post->ID, 'page_options_' . $field['id'], true );
-				switch ( $field['type'] ) {
-					case 'checkbox':
-						$input = sprintf(
-							'<input %s id="%s" name="%s" type="checkbox" value="1">',
-							$db_value === '1' ? 'checked' : '',
-							$field['id'],
-							$field['id']
-						);
-						break;
-					default:
-						$input = sprintf(
-							'<input id="%s" name="%s" type="%s" value="%s">',
-							$field['id'],
-							$field['id'],
-							$field['type'],
-							$db_value
-						);
-				}
-				$output .= '<p>' . $label . '<br>' . $input . '</p>';
-			}
-			echo $output;
-		}
-		/**
-		* Hooks into WordPress' save_post function
-		*/
-		public function save_post( $post_id ) {
-			if ( ! isset( $_POST['page_options_nonce'] ) )
-				return $post_id;
-
-			$nonce = $_POST['page_options_nonce'];
-			if ( !wp_verify_nonce( $nonce, 'page_options_data' ) )
-				return $post_id;
-
-			if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
-				return $post_id;
-
-			foreach ( $this->fields as $field ) {
-				if ( isset( $_POST[ $field['id'] ] ) ) {
-					switch ( $field['type'] ) {
-						case 'email':
-							$_POST[ $field['id'] ] = sanitize_email( $_POST[ $field['id'] ] );
-							break;
-						case 'text':
-							$_POST[ $field['id'] ] = sanitize_text_field( $_POST[ $field['id'] ] );
-							break;
-					}
-					update_post_meta( $post_id, 'page_options_' . $field['id'], $_POST[ $field['id'] ] );
-				} else if ( $field['type'] === 'checkbox' ) {
-					update_post_meta( $post_id, 'page_options_' . $field['id'], '0' );
-				}
-			}
-		}
-	}
-	new Page_Options_Metabox;
-
 	/* Add Numbered Pagination */
 	function starkers_numeric_posts_nav() {
 		if( is_singular() )
@@ -194,4 +88,36 @@
 		if ( get_next_posts_link() )
 			printf( '<li>%s</li>' . "\n", get_next_posts_link() );
 		echo '</ul></div>' . "\n";
+	}
+
+	/* Gets The Page Slug */
+	if ( !function_exists("get_page_slug") ) {
+		/**
+		* Returns the page or post slug.
+		* @param int|WP_Post|null $id (Optional) Post ID or post object. Defaults to global $post.
+		* @return string
+		*/
+		function get_page_slug( $id = null ){
+			$post = get_post($id);
+			if( !empty($post) ) return $post->post_name;
+			return ''; // No global $post var or matching ID available.
+		}
+		/**
+		* Display the page or post slug
+		* Uses get_page_slug() and applies 'the_slug' filter.
+		* @param int|WP_Post|null $id (Optional) Post ID or post object. Defaults to global $post.
+		*/
+		function the_slug( $id=null ){
+			echo apply_filters( 'the_slug', get_page_slug($id) );
+		}
+	}
+
+	// Get ID of Slug
+	function get_id_by_slug( $page_slug ) {
+		$page = get_page_by_path( $page_slug );
+		if( $page ) {
+			return $page->ID;
+		} else {
+			return null;
+		}
 	}

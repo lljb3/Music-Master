@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying Category Archive pages
+ * The template for displaying Taxonomy pages
  *
  * Please see /external/starkers-utilities.php for info on Starkers_Utilities::get_template_parts()
  *
@@ -19,7 +19,7 @@
 <!-- Container Information -->
 <div class="container-fluid" id="content">
     <div class="row">
-        <h2 class="has-title text-center">Category Archive: <?php echo single_cat_title( '', false ); ?></h2>	
+        <h2 class="has-title text-center">Taxonomy Archive: <?php echo single_tax_title( '', false ); ?></h2>	
         <div class="col-md-6 col-md-offset-1" id="posts-section">
 			<?php if ( have_posts() ): ?>
             <ol class="row list-unstyled">
@@ -37,7 +37,7 @@
             <?php endwhile; ?>
             <!-- end .list-unstyled --></ol>
             <?php else: ?>
-                <h2>No posts to display in <?php echo single_cat_title( '', false ); ?></h2>
+                <h2>No posts to display in <?php echo single_tax_title( '', false ); ?></h2>
             <?php endif; ?>
             <div class="row" id="pagination">
             	<div class="col-md-12">
@@ -51,6 +51,6 @@
     <!-- end .row --></div>
 <!-- end #content --></div>
 
-<!-- end .category --></main>
+<!-- end .taxonomy --></main>
 
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/footer','parts/shared/html-footer' ) ); ?>

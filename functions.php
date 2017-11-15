@@ -43,17 +43,18 @@
 	
 	======================================================================================================================== */
 
-	add_action( 'wp_enqueue_scripts', 'starkers_script_enqueuer', 999999 );
+	add_action( 'wp_enqueue_scripts', 'starkers_script_enqueuer', 99999999 );
 	add_filter( 'body_class', array( 'Starkers_Utilities', 'add_slug_to_body_class' ) );
 
 	/* ========================================================================================================================
 	
-	Custom Post Types - include custom post types and taxonimies here
+	Custom Post Types - include custom post types, included plugins, and taxonomies here
 	
 	======================================================================================================================== */
 
 	require_once( 'includes/discography/discography-plugin.php' );
 	require_once( 'includes/shows/shows-plugin.php' );
+	require_once( 'includes/add-media-url/add-media-url.php' );
 
 	/* ========================================================================================================================
 	

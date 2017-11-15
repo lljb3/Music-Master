@@ -1,17 +1,25 @@
 <?php
-/**
- * The Template for displaying all single posts
- *
- * Please see /external/starkers-utilities.php for info on Starkers_Utilities::get_template_parts()
- *
- * @package 	WordPress
- * @subpackage 	Starkers
- * @since 		Starkers 4.0
- */
+    /**
+     * The Template for displaying all single posts
+     *
+     * Please see /external/starkers-utilities.php for info on Starkers_Utilities::get_template_parts()
+     *
+     * @package 	WordPress
+     * @subpackage 	Starkers
+     * @since 		Starkers 4.0
+     */
+    global $prodhmd_theme_option;
+    $attachment_id = get_post_thumbnail_id(); 
+    $bg_url = wp_get_attachment_image_src($attachment_id, 'full', false);
 ?>
-<?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header', 'parts/shared/header' ) ); ?>
+<?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header' ) ); ?>
 
-<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+
+<!-- Main Information -->
+<main <?php body_class(); ?> id="main">
+
+<?php Starkers_Utilities::get_template_parts( array( 'parts/shared/header' ) ); ?>
 
 <!-- Container Information -->
 <div class="container-fluid" id="content">
@@ -33,12 +41,15 @@
                     <?php comments_template( '', true ); ?>
                 <!-- end .has-text --></div>
             <!-- end .post --></article>
-            <?php endwhile; ?>
         <!-- end .col-md-6 --></div>
         <div class="col-md-4" id="posts-sidebar">
         	<?php dynamic_sidebar('posts-sidebar'); ?>
         <!-- end .col-md-4 --></div>
     <!-- end .row --></div>
 <!-- end #content --></div>
+
+<?php endwhile; endif; ?>
+
+<!-- end .single --></main>
 
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/footer','parts/shared/html-footer' ) ); ?>

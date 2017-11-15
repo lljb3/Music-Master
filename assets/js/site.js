@@ -6,6 +6,7 @@
 			'angular': '/wp-content/themes/music-master/assets/js/lib/angular.min',
 			'plugins': '/wp-content/themes/music-master/assets/js/lib/plugins.min',
 			'jplayer': '/wp-content/themes/music-master/assets/js/lib/music.min',
+			'isotope': '/wp-content/themes/music-master/assets/js/lib/isotope.min',
 		},
 		shim: {
 			'rellax': {
@@ -16,12 +17,19 @@
 	if (typeof jQuery === 'function') {
 		define('jquery', function () { return jQuery; });
 	}
-	requirejs(['angular','plugins'], function() {
+	requirejs(['angular','plugins','isotope'], function() {
 		
 		// Global Vars
 		var windowHeight = $(window).innerHeight();
 		var menu = $('#header-container');
 		var origOffsetY = menu.offset().top;
+
+		// Preloader
+		$(window).load(function() {
+			$(this).scrollTop();
+			$('#loader').delay(350).fadeOut('slow');
+			$('body').delay(350).css({'overflow':'visible'});
+		});
 		
 		// Sticky Header
 		function scroll() {
@@ -35,16 +43,6 @@
 		}
 		document.onscroll = scroll;
 		
-		// Transition Navbar
-		$(document).on("scroll",function(){
-			if($(document).scrollTop() > 300){
-				$("#trans-menu").removeClass("large").addClass("small");
-			} 
-			else{
-				$("#trans-menu").removeClass("small").addClass("large");
-			}
-		});
-
 		// Navbar Dropdown
 		function is_touch_device() {
 			return 'ontouchstart' in window // Works on most browsers 
@@ -97,34 +95,6 @@
 			}
 		});
 		
-		// Facebook API
-		(function(d, s, id) {
-			var js, fjs = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id)) return;
-			js = d.createElement(s); js.id = id;
-			js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
-			fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
-		
-		// Twitter API
-		!function(d,s,id){
-			var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
-			if(!d.getElementById(id)){
-				js=d.createElement(s); js.id=id;
-				js.src=p+"://platform.twitter.com/widgets.js";
-				fjs.parentNode.insertBefore(js,fjs);
-			}
-		}(document,"script","twitter-wjs");
-		
-		// Detect External Links
-		var externallinkage = $('a').click(function() {
-			var href = $(this).attr('href');
-			if ((href.match(/^https?\:/i)) && (!href.match(document.domain))) {
-				var extLink = href.replace(/^https?\:\/\//i, '');
-			}
-		});
-		externallinkage.init();
-
 		// Isotope Call
 		function musictope() {
 			// Isotope
@@ -153,12 +123,12 @@
 				$('#listing').animate({opacity: 1.0}, 200);
 			});
 			// Filter Items on Button Click
-			$('.button-group').on( 'click', 'button', function() {
+			jQuery('.button-group').on( 'click', 'button', function() {
 				var filterValue = $(this).attr('data-filter');
-				$('.isotope').isotope({ filter: filterValue });
+				jQuery('.isotope').isotope({ filter: filterValue });
 			});
 		}
-
+	
 		// Handling Link Hash
 		function windowhash() {
 			var $hash = $(window.location.hash);
@@ -196,19 +166,6 @@
 			}
 		}
 
-		// AnivewJS Options
-		var options = {
-			animateThreshold: 100,
-			scrollPollInterval: 20
-		}
-		$('.aniview').AniView(options);
-
-		// FancyBox 2
-		$('.fancybox').fancybox();
-
-		// StellarJS Init
-		$.stellar();
-
 		// Loader Vars
 		var loadin = function loadin() {
 			$('body').addClass('loadin');	
@@ -224,9 +181,11 @@
 		}
 		
 		// Smooth State AJAX
-		$('#main').smoothState({
+		$('main').smoothState({
 			blacklist: '.nosmoothstate, .fancybox',
-			onBefore: function($anchor, $container) {},
+			onBefore: function($anchor, $container) {
+				loadout();
+			},
 			onStart: {
 				duration: 350,
 				render: function ($container) {
@@ -248,71 +207,110 @@
 			},
 			onAfter: function($container, $newContent) {
 				loadout();
-				musictope();
+				musictope();				
 				windowhash();
 				addBlacklistClass();
 				addBlacklistHash();
 			}
 		});
-		
 
-		// Video Intro
-		window.onload = function() {
-			// Global Vars
-			var video = document.getElementById('video');
-			var playButton = document.getElementById('video-play');
-			var muteButton = document.getElementById('video-mute');
-			var fullScreenButton = $('#video-fscreen');
-			// Button Functions
-			playButton.addEventListener('click',function() {
-				if (video.paused == true) {
+		// Facebook API
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+		
+		// Twitter API
+		!function(d,s,id){
+			var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+			if(!d.getElementById(id)){
+				js=d.createElement(s); js.id=id;
+				js.src=p+"://platform.twitter.com/widgets.js";
+				fjs.parentNode.insertBefore(js,fjs);
+			}
+		}(document,"script","twitter-wjs");
+		
+		// Detect External Links
+		var externallinkage = $('a').click(function() {
+			var href = $(this).attr('href');
+			if ((href.match(/^https?\:/i)) && (!href.match(document.domain))) {
+				var extLink = href.replace(/^https?\:\/\//i, '');
+			}
+		});
+		externallinkage.init();
+
+		// AnivewJS Options
+		var options = {
+			animateThreshold: 100,
+			scrollPollInterval: 20
+		}
+		$('.aniview').AniView(options);
+
+		// FancyBox 2
+		$('.fancybox').fancybox();
+
+		if ($('main').hasClass('.intro')) {
+			// Video Intro
+			window.onload = function() {
+				// Global Vars
+				var video = document.getElementById('video');
+				var playButton = document.getElementById('video-play');
+				var muteButton = document.getElementById('video-mute');
+				var fullScreenButton = $('#video-fscreen');
+				// Button Functions
+				playButton.addEventListener('click',function() {
+					if (video.paused == true) {
+						// Play the video
+						video.play();
+						// Update the button text to 'Pause'
+						playButton.innerHTML = '<span class="glyphicon glyphicon-pause"></span>';
+					} else {
+						// Pause the video
+						video.pause();
+						// Update the button text to 'Play'
+						playButton.innerHTML = '<span class="glyphicon glyphicon-play"></span>';
+					}
+				});
+				muteButton.addEventListener('click',function() {
+					if (video.muted == false) {
+						// Mute the video
+						video.muted = true;
+						// Update the button text
+						muteButton.innerHTML = '<span class="glyphicon glyphicon-volume-off"></span>';
+					} else {
+						// Unmute the video
+						video.muted = false;
+						// Update the button text
+						muteButton.innerHTML = '<span class="glyphicon glyphicon-volume-up"></span>';
+					}
+				});
+				fullScreenButton.click(function() {
+					if (video.requestFullscreen) {
+						video.requestFullscreen();
+					} else if (video.mozRequestFullScreen) {
+						video.mozRequestFullScreen(); // Firefox
+					} else if (video.webkitRequestFullscreen) {
+						video.webkitRequestFullscreen(); // Chrome and Safari
+					}
+				});
+				// Replay Video
+				$('#replay').click(function() {
 					// Play the video
 					video.play();
-					// Update the button text to 'Pause'
-					playButton.innerHTML = '<span class="glyphicon glyphicon-pause"></span>';
-				} else {
-					// Pause the video
-					video.pause();
-					// Update the button text to 'Play'
-					playButton.innerHTML = '<span class="glyphicon glyphicon-play"></span>';
-				}
-			});
-			muteButton.addEventListener('click',function() {
-				if (video.muted == false) {
-					// Mute the video
-					video.muted = true;
-					// Update the button text
-					muteButton.innerHTML = '<span class="glyphicon glyphicon-volume-off"></span>';
-				} else {
-					// Unmute the video
-					video.muted = false;
-					// Update the button text
-					muteButton.innerHTML = '<span class="glyphicon glyphicon-volume-up"></span>';
-				}
-			});
-			fullScreenButton.click(function() {
-				if (video.requestFullscreen) {
-					video.requestFullscreen();
-				} else if (video.mozRequestFullScreen) {
-					video.mozRequestFullScreen(); // Firefox
-				} else if (video.webkitRequestFullscreen) {
-					video.webkitRequestFullscreen(); // Chrome and Safari
-				}
-			});
-			// Replay Video
-			$('#replay').click(function() {
-				// Play the video
-				video.play();
-				// Hide Replay Button
-				$(this).removeClass('fade-in');
+					// Hide Replay Button
+					$(this).removeClass('fade-in');
+				});
+			}
+			// When Video Ends
+			$('video').on('ended',function(){
+				console.log('Video has ended!');
+				$(this).addClass('has-ended');
+				$('#replay').addClass('fade-in');
 			});
 		}
-		// When Video Ends
-		$('video').on('ended',function(){
-			console.log('Video has ended!');
-			$(this).addClass('has-ended');
-			$('#replay').addClass('fade-in');
-		});
 		
 	});
 					

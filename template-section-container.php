@@ -5,34 +5,33 @@
 ?>
 
 <?php
-	/**
-	 * The template for displaying all pages.
-	 *
-	 * This is the template that displays all pages by default.
-	 * Please note that this is the WordPress construct of pages
-	 * and that other 'pages' on your WordPress site will use a
-	 * different template.
-	 *
-	 * Please see /external/starkers-utilities.php for info on Starkers_Utilities::get_template_parts()
-	 *
-	 * @package 	WordPress
-	 * @subpackage 	Starkers
-	 * @since 		Starkers 4.0
-	 */
-global $prodhmd_theme_option; 
-$trans_opt = $prodhmd_theme_option['transitional-header-button'];
-$trans_page_opt = get_post_meta($post->ID,'page_options_trans-header',true);
+    /**
+     * The template for displaying all pages.
+     *
+     * This is the template that displays all pages by default.
+     * Please note that this is the WordPress construct of pages
+     * and that other 'pages' on your WordPress site will use a
+     * different template.
+     *
+     * Please see /external/starkers-utilities.php for info on Starkers_Utilities::get_template_parts()
+     *
+     * @package 	WordPress
+     * @subpackage 	Starkers
+     * @since 		Starkers 4.0
+     */
+    global $prodhmd_theme_option;
+    $attachment_id = get_post_thumbnail_id(); 
+    $bg_url = wp_get_attachment_image_src($attachment_id, 'full', false);
 ?>
-<?php if ( $trans_page_opt == 1 ) { ?> 
-    <?php if ( $prodhmd_theme_option['transitional-header-button'] ) { ?>
-        <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header', 'parts/shared/trans-header' ) ); ?>
-    <?php } ?>
-<?php } else { ?>
-    <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header', 'parts/shared/header' ) ); ?>
-<?php } ?>
+<?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header' ) ); ?>
+
+<!-- Main Information -->
+<main <?php body_class(); ?> id="main">
+
+<?php Starkers_Utilities::get_template_parts( array( 'parts/shared/header' ) ); ?>
 
 <!-- Jumbotron Information -->
-<div class="jumbotron" id="home">
+<div class="jumbotron" id="other">
     <div class="slider-text container-fluid">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
@@ -82,14 +81,14 @@ $trans_page_opt = get_post_meta($post->ID,'page_options_trans-header',true);
     <!-- end .slider-text --></div>
     <?php $jumboimg = wp_get_attachment_url( get_post_thumbnail_id() ); ?>
     <div class="slider">
-        <?php $slidername = get_post_meta($post->ID, "layer_slider_post_class", true); ?>
+        <?php $slidername = get_post_meta($post->ID, "slidermeta-name", true); ?>
         <?php if( !empty( $slidername ) ) { layerslider($slidername); } else { echo '<div class="jumbotron-img" style="background-image:url(' . $jumboimg . ');"></div>'; } ?>
     <!-- end .slider --></div>
     <div class="slider-wash"></div>
 <!-- end .jumbotron --></div>
 
 <!-- Section Container Information -->
-<main class="container-fluid" id="section-container">
+<section class="container-fluid" id="section-container">
 	<?php 
 		$args = array(
 			'post_type'=>'page',
@@ -108,16 +107,23 @@ $trans_page_opt = get_post_meta($post->ID,'page_options_trans-header',true);
                     $post_slug = $post->post_name;
                     $section_bg = wp_get_attachment_url( get_post_thumbnail_id() );
                 ?>
-                <section class="container-fluid section" id="<?php echo $post_slug; ?>" <?php if( !empty( $section_bg ) ) { ?> style="background-image:url('<?php echo $section_bg; ?>')" <?php } ?>>
+                <div class="container-fluid section" id="<?php echo $post_slug; ?>" <?php if( !empty( $section_bg ) ) { ?> style="background-image:url('<?php echo $section_bg; ?>')" <?php } ?>>
 					<div class="row">
 						<div class="col-md-12">
 							<?php the_content(); ?>
 						<!-- end .col-md-12 --></div>
 					<!-- end .row --></div>
-				<!-- end #section --></section>
+				<!-- end #section --></div>
 			<?php endwhile; ?>
         <!-- end .col-md-12 --></div>
     <!-- end .row --></div>
-<!-- end #content --></main>
+<!-- end #content --></section>
+
+<!-- Background Information -->
+<div class="<?php global $post; echo get_post($post)->post_name; ?>-container" id="content-bg">
+    <img src="<?php echo $bg_url[0]; ?>" class="background img-responsive center-block" />
+<!-- end #content-bg --></div>
+
+<!-- end .home --></main>
 
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/footer','parts/shared/html-footer' ) ); ?>
