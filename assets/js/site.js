@@ -23,13 +23,6 @@
 		var windowHeight = $(window).innerHeight();
 		var menu = $('#header-container');
 		var origOffsetY = menu.offset().top;
-
-		// Preloader
-		$(window).load(function() {
-			$(this).scrollTop();
-			$('#loader').delay(350).fadeOut('slow');
-			$('body').delay(350).css({'overflow':'visible'});
-		});
 		
 		// Sticky Header
 		function scroll() {
@@ -145,13 +138,14 @@
 		// Adding Backlist Classes
 		function addBlacklistClass() {
 			$('a').each(function() {
-				if (this.href.indexOf('/wp-admin') !== -1 ||
-				this.href.indexOf('/wp-login.php') !== -1 ||
-				$('#main .archive').hasClass('woocommerce-cart')) {
+				if (window.location.href.indexOf('/wp-admin') !== -1 ||
+				window.location.href.indexOf('/wp-login.php') !== -1 ||
+				window.location.href.indexOf('/shop') !== -1) {
 					$(this).addClass('nosmoothstate');
 				}
-			})
+			});
 		}
+		addBlacklistClass();
 
 		// Adding Comments Section Hash
 		function addBlacklistHash() {
@@ -166,18 +160,74 @@
 			}
 		}
 
+		if (window.location.href.indexOf('/shop') !== -1) {
+			// Do Nothing
+			$('#loader').delay(1750).fadeOut('slow');
+			$('.navbar-brand').click(function(){
+				window.close();
+			});
+			console.log('This is the shop page.');
+			console.log('Logo click closes window.');
+		} else {
+			// Loading Bar
+			var width = 100, // width of a progress bar in percentage
+				perfData = window.performance.timing, // The PerformanceTiming interface
+				EstimatedTime = -(perfData.loadEventEnd - perfData.navigationStart), // Calculated Estimated Time of Page Load which returns negative value.
+				time = parseInt((EstimatedTime/1000)%60)*100; //Converting EstimatedTime from miliseconds to seconds.
+			// Loadbar Animation
+			$(".loadbar").animate({
+				width: width + "%"
+			}, time);
+			// Percentage Increment Animation
+			var PercentageID = $("#percent"),
+				start = 0,
+				end = 100,
+				duration = time;
+				animateValue(PercentageID, start, end, duration);
+			// Animate Value Function
+			function animateValue(id, start, end, duration) {
+				var range = end - start,
+					current = start,
+					increment = end > start? 1 : -1,
+					stepTime = Math.abs(Math.floor(duration / range)),
+					obj = $(id);
+				var timer = setInterval(function() {
+					current += increment;
+					$(obj).text(current + "%");
+					//obj.innerHTML = current;
+					if (current == end) {
+						clearInterval(timer);
+					}
+				}, stepTime);
+			}
+			// Loading Page
+			setTimeout(function(){
+				$(this).scrollTop();
+				$('#loader').delay(1750).fadeOut('slow');
+				$('body').delay(1750).css({'overflow':'visible'});
+			}, time);
+		}
+
 		// Loader Vars
 		var loadin = function loadin() {
-			$('body').addClass('loadin');	
+			$('body').addClass('loadin');
+			$('#loader').fadeIn();	
 		}
 		var loading = function loading() {
-			$('#loader').fadeIn();
+			var loadbar = $('.loadbar');
+			animateValue(loadbar, start, end, duration);			
+			animateValue(PercentageID, start, end, duration);			
 		}
 		var loaded = function loaded() {
-			$('body').delay(350).removeClass('loadin');
+			$('body').delay(750).removeClass('loadin');
 		}
 		var loadout = function loadout() {
-			$('#loader').delay(350).fadeOut('slow');
+			setTimeout(function(){
+				$(this).scrollTop();
+				$('#loader').delay(750).fadeOut('slow');
+				$('body').delay(750).css({'overflow':'visible'});
+			}, time);
+			$(".loading").css({ display: 'none' });
 		}
 		
 		// Smooth State AJAX

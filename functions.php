@@ -34,6 +34,7 @@
 	function register_my_menu() {
 		register_nav_menu( 'primary', 'Home Menu' );
 		register_nav_menu( 'secondary', 'Other Menu' );
+		register_nav_menu( 'shop', 'Shop Menu' );
 	}
 	add_action( 'after_setup_theme', 'register_my_menu' );
 	

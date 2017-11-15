@@ -15,19 +15,22 @@
     * @package 	WooCommerce/Templates
     * @version     2.0.0
     */
-
-    if ( ! defined( 'ABSPATH' ) ) {
-        exit; // Exit if accessed directly
-    }
+    global $prodhmd_theme_option;
+    $slug_id = get_id_by_slug('shop');
+    $slug_attachment_id = get_post_thumbnail_id($slug_id);
+    $attachment_id = get_post_thumbnail_id();
+    $bg_url = wp_get_attachment_image_src($slug_attachment_id, 'full', false);
+    $img_url = wp_get_attachment_image_src($attachment_id, 'full', false);
 ?>
-<?php global $prodhmd_theme_option; if ( $prodhmd_theme_option['transitional-header-button'] ) { ?>
-	<?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header', 'parts/shared/trans-header' ) ); ?>
-<?php } else { ?>
-	<?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header', 'parts/shared/header' ) ); ?>
-<?php } ?>
+<?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header' ) ); ?>
+
+<!-- Main Information -->
+<main <?php body_class(); ?> id="main">
+
+<?php Starkers_Utilities::get_template_parts( array( 'parts/shared/header' ) ); ?>
 
 <!-- Content Information -->
-<div class="container-fluid" id="content">
+<section class="container-fluid" id="content">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="row">
@@ -37,7 +40,7 @@
                             * woocommerce_before_main_content hook.
                             *
                             * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
-                            * @hooked woocommerce_breadcrumb - 20
+                            * @hooked woocommerce_breadcrumb - 0
                             * @hooked WC_Structured_Data::generate_website_data() - 30
                             */
                         do_action( 'woocommerce_before_main_content' );
@@ -113,6 +116,13 @@
             <!-- end .row --></div>
         <!-- end .col-md-10 --></div>
     <!-- end .row --></div>
-<!-- end #content --></div>
+<!-- end #content --></section>
+
+<!-- Background Information -->
+<div class="<?php global $post; echo get_post($post)->post_name; ?>-container" id="content-bg">
+    <img src="<?php echo $bg_url[0]; ?>" class="background img-responsive center-block" />
+<!-- end #content-bg --></div>
+
+<!-- end .home --></main>
 
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/footer','parts/shared/html-footer' ) ); ?>

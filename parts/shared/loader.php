@@ -14,13 +14,17 @@
 		echo '}';
 	echo '</style>';
 
-	echo '<div id="loader" class="">';
-		if (!isset($imageurl)) {
-			echo '<div class="overlay">';
+	echo '<div id="loader">';
+		echo '<div class="overlay">';
+			if (!empty($imageurl)) {
 				echo '<img src="'.$imageparts['dirname'].'/'.$imageparts['basename'].'" class="logo img-responsive center-block" />';
+			}
+			echo '<div class="loading">';
+				echo '<div class="loadbar"></div>';
+				echo '<div class="percentage" id="percent"></div>';
 			echo '</div>';
-		}
-		if (!isset($videourl)) {
+		echo '</div>';
+		if (!empty($videourl)) {
 			echo '<div class="video">';
 				echo '<video autoplay loop muted nocontrols class="cutaway">';
 					echo '<source src="'.$videoparts['dirname'].'/'.$videoparts['filename'].'.mp4" type="video/mp4">';
