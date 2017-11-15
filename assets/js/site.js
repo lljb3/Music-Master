@@ -214,8 +214,9 @@
 			$('#loader').fadeIn();	
 		}
 		var loading = function loading() {
-			var loadbar = $('.loadbar');
-			animateValue(loadbar, start, end, duration);			
+			$(".loadbar").animate({
+				width: width + "%"
+			}, time);
 			animateValue(PercentageID, start, end, duration);			
 		}
 		var loaded = function loaded() {
