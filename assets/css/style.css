@@ -950,6 +950,16 @@ p {
     width: auto;
     height: auto;
 }
+.album-links a {
+    width: 100%;
+    float: left;
+    text-align: center;
+    background-color: #000;
+    margin-bottom: 10px;
+}
+.album-links a:first-child {
+    margin-top: 10px;
+}
 .go-back {
     margin-top: 2em;
     margin-bottom: 1em;

@@ -51,7 +51,7 @@
                 <ol class="row isotope" id="album-list">
                     <?php while ( have_posts() ) : the_post(); ?>
                         <?php $terms = get_the_terms($post->ID ,'albumtype'); ?>
-                        <li class="isotope-item transition <?php foreach ( $terms as $term ) { echo $term->slug; } ?> col-md-4 col-xs-4" id="album-post" data-category="transition">
+                        <li class="isotope-item transition <?php foreach ( $terms as $term ) { echo $term->slug; } ?> col-md-3 col-xs-6" id="album-post" data-category="transition">
                             <article class="album-item">
                                 <h4 class="has-title hidden">
                                     <a href="<?php esc_url( the_permalink() ); ?>" title="Permalink to <?php the_title(); ?>" rel="bookmark"><?php the_title(); ?></a>
