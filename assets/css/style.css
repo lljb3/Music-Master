@@ -5,7 +5,7 @@
 .fa {
     font-family: 'FontAwesome' !important;
     font-weight: 400 !important;
-    font-size: 150%;
+    font-size: 125%;
     line-height: normal;
     text-align: center;
     padding: .5em 0px;
@@ -286,8 +286,8 @@ p {
 	border-radius: 15px;
 }
 #header-container #site-social a {
-	width: 48px;
-	height: 48px;
+	width: 2.5em;
+	height: 2.5em;
 	transition: all .2s;
 	display: inline-block !important;
 }
@@ -928,6 +928,16 @@ p {
 	margin-top: 0;
 }
 .album-info {
+    margin-bottom: 15px;
+}
+.album-links {
+    margin-top: 15px;
+}
+.album-links a {
+    width: 100%;
+    float: left;
+    text-align: center;
+    background-color: #000;
     margin-bottom: 15px;
 }
 .album-links .fa {
