@@ -55,6 +55,7 @@
 
 	require_once( 'includes/discography/discography-plugin.php' );
 	require_once( 'includes/shows/shows-plugin.php' );
+	require_once( 'includes/videos/videos-plugin.php' );
 	require_once( 'includes/add-media-url/add-media-url.php' );
 
 	/* ========================================================================================================================
