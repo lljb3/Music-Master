@@ -1127,6 +1127,7 @@ p {
 	padding: 0;
 	cursor: pointer;
 	transition: .2s ease-in-out all;
+	margin-right: 5px;
 }
 #playerControls li:hover {
 	transition: .2s ease-in-out all;
