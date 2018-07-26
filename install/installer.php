@@ -4,16 +4,26 @@
 	/* Theme Required Plugins */
 	function kaketheme_require_plugins() {
 		$plugins = array( /* The array to install plugins */ 
+			array(
+				'name'      => 'Fusion Page Builder',
+				'slug'      => 'fusion',
+				'required'  => true,
+			),
+			array(
+				'name'      => 'Fusion: Extension - Image',
+				'slug'      => 'fusion-extension-image',
+				'required'  => true,
+			),
 			/*
 			array(
-				'name'      => 'WR Page Builder',
-				'slug'      => 'wr-pagebuilder',
+				'name'      => 'Bootstrap 3 Shortcodes',
+				'slug'      => 'bootstrap-3-shortcodes',
 				'required'  => false,
 			),
 			*/
 			array(
-				'name'      => 'Bootstrap 3 Shortcodes',
-				'slug'      => 'bootstrap-3-shortcodes',
+				'name'      => 'Responsive Lightbox & Gallery',
+				'slug'      => 'responsive-lightbox',
 				'required'  => true,
 			),
 			array(
